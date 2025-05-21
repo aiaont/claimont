@@ -1,4 +1,4 @@
 # claimont
-Claim Ontology
+## Claim Ontology
 
-An ontology for claims.
+An ontology for claims. 
