@@ -1,0 +1,523 @@
+[
+  {
+    "@id": "http://www.example.org/claim-ontology#Bob",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#NamedIndividual",
+      "http://www.example.org/claim-ontology#Claimant"
+    ]
+  },
+  {
+    "@id": "http://www.example.org/claim-ontology#Claim",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "A Claim may comprise other Claims."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Claim"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#definition": [
+      {
+        "@value": "A defeasible statement about a thing."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.example.org/claim-ontology#Subject",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Subject"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#equivalentClass": [
+      {
+        "@id": "owl:thing"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#definition": [
+      {
+        "@value": "The thing about which a claim is made."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.example.org/claim-ontology#Claimant",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Claimant"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#definition": [
+      {
+        "@value": "An entity (person, organisation, system) that makes a claim."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.example.org/claim-ontology#EmailVerificationReport1",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#NamedIndividual",
+      "http://www.example.org/claim-ontology#Report"
+    ]
+  },
+  {
+    "@id": "http://www.example.org/claim-ontology#Attestation",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "A verifier's statement is an example of an attestation."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Attestation"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.example.org/claim-ontology#Substantiation"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#definition": [
+      {
+        "@value": "An indefeasible statement, usually formal, made by an entity according to which they have witnessed or been presented with sufficient evidence to consider a specific claim made by another entity as truthful or accurate."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.example.org/claim-ontology#Object",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Object"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#definition": [
+      {
+        "@value": "The target or value associated with the predicate in a claim."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.example.org/claim-ontology#comprisesClaims",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.example.org/claim-ontology#Claim"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.example.org/claim-ontology#Claim"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.example.org/claim-ontology#IdentityClaim",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Identity Claim"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.example.org/claim-ontology#Claim"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#definition": [
+      {
+        "@value": "A statement made by a claimant about their identity, usually with reference to some identification system."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.example.org/claim-ontology#Jake",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#NamedIndividual",
+      "http://www.example.org/claim-ontology#Attester"
+    ]
+  },
+  {
+    "@id": "http://www.example.org/claim-ontology#Claim2",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#NamedIndividual",
+      "http://www.example.org/claim-ontology#Claim"
+    ],
+    "http://www.example.org/claim-ontology#hasObject": [
+      {
+        "@type": "xsd:string",
+        "@value": "London"
+      },
+      {
+        "@type": "xsd:date",
+        "@value": "2025-03-20"
+      },
+      {
+        "@type": "xsd:string",
+        "@value": "London on 20 March 2025"
+      }
+    ],
+    "http://www.example.org/claim-ontology#hasPredicate": [
+      {
+        "@id": "schema:location"
+      },
+      {
+        "@id": "dcterms:date"
+      }
+    ],
+    "http://www.example.org/claim-ontology#hasSubject": [
+      {
+        "@id": "http://www.example.org/Bob"
+      }
+    ],
+    "http://www.example.org/claim-ontology#isMadeBy": [
+      {
+        "@id": "http://www.example.org/Bob"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.example.org/claim-ontology#hasSubject",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "_:N37aa3cb026a94f579776621cc941fe08"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "_:N8745070aa97b4232bb5a47ce63a3cbf3"
+      }
+    ]
+  },
+  {
+    "@id": "_:N37aa3cb026a94f579776621cc941fe08",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2002/07/owl#unionOf": [
+      {
+        "@list": [
+          {
+            "@id": "http://www.example.org/claim-ontology#Claim"
+          },
+          {
+            "@id": "http://www.example.org/claim-ontology#Attestation"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "@id": "_:N8745070aa97b4232bb5a47ce63a3cbf3",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2002/07/owl#unionOf": [
+      {
+        "@list": [
+          {
+            "@id": "http://www.example.org/claim-ontology#Subject"
+          },
+          {
+            "@id": "http://www.example.org/claim-ontology#Claim"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "@id": "http://www.example.org/claim-ontology#isMadeBy",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "_:N81b0f6a8f8634231988442811ad908cf"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.example.org/claim-ontology#Claimant"
+      }
+    ]
+  },
+  {
+    "@id": "_:N81b0f6a8f8634231988442811ad908cf",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2002/07/owl#unionOf": [
+      {
+        "@list": [
+          {
+            "@id": "http://www.example.org/claim-ontology#Claim"
+          },
+          {
+            "@id": "http://www.example.org/claim-ontology#Attestation"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "@id": "http://www.example.org/claim-ontology",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Ontology"
+    ],
+    "http://purl.org/dc/terms/description": [
+      {
+        "@language": "en",
+        "@value": "An ontology for describing claims and their substantiation."
+      }
+    ],
+    "http://purl.org/dc/terms/title": [
+      {
+        "@language": "en",
+        "@value": "Claim Ontology"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.example.org/claim-ontology#hasObject",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.example.org/claim-ontology#Claim"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.example.org/claim-ontology#Object"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.example.org/claim-ontology#AirLineTicket578456",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#NamedIndividual",
+      "http://www.example.org/claim-ontology#Substantiation"
+    ],
+    "http://www.example.org/claim-ontology#supports": [
+      {
+        "@id": "http://www.example.org/Claim2"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.example.org/claim-ontology#Alice",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#NamedIndividual",
+      "http://www.example.org/claim-ontology#Claimant"
+    ]
+  },
+  {
+    "@id": "http://www.example.org/claim-ontology#TestimonyOfFriendOfBob",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#NamedIndividual",
+      "http://www.example.org/claim-ontology#Attestation"
+    ],
+    "http://www.example.org/claim-ontology#hasObject": [
+      {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      }
+    ],
+    "http://www.example.org/claim-ontology#hasPredicate": [
+      {
+        "@id": "http://www.example.org/is"
+      }
+    ],
+    "http://www.example.org/claim-ontology#hasSubject": [
+      {
+        "@id": "http://www.example.org/Claim2"
+      }
+    ],
+    "http://www.example.org/claim-ontology#isMadeBy": [
+      {
+        "@id": "http://www.example.org/Jake"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.example.org/claim-ontology#Claim1",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#NamedIndividual",
+      "http://www.example.org/claim-ontology#IdentityClaim"
+    ],
+    "http://www.example.org/claim-ontology#hasObject": [
+      {
+        "@type": "xsd:string",
+        "@value": "alice@example.com"
+      }
+    ],
+    "http://www.example.org/claim-ontology#hasPredicate": [
+      {
+        "@id": "schema:email"
+      }
+    ],
+    "http://www.example.org/claim-ontology#hasSubject": [
+      {
+        "@id": "http://www.example.org/Alice"
+      }
+    ],
+    "http://www.example.org/claim-ontology#isMadeBy": [
+      {
+        "@id": "http://www.example.org/Alice"
+      }
+    ],
+    "http://www.example.org/claim-ontology#isSupportedBy": [
+      {
+        "@id": "http://www.example.org/EmailVerificationReport1"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.example.org/claim-ontology#hasPredicate",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.example.org/claim-ontology#Claim"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.example.org/claim-ontology#Predicate"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.example.org/claim-ontology#Report",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Report"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.example.org/claim-ontology#Claim"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#definition": [
+      {
+        "@value": "A claim made according to some specification."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.example.org/claim-ontology#Attester",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Attester"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#definition": [
+      {
+        "@value": "An entity (person, organisation, system) that makes an attestation."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.example.org/claim-ontology#Substantiation",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Substantiation"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#definition": [
+      {
+        "@value": "A thing presented in support of the truthfulness of a claim."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.example.org/claim-ontology#isSupportedBy",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.example.org/claim-ontology#Claim"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.example.org/claim-ontology#Substantiation"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#inverseOf": [
+      {
+        "@id": "http://www.example.org/claim-ontology#supports"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.example.org/claim-ontology#Predicate",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Predicate"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#definition": [
+      {
+        "@value": "The characteristic, attribute, or relationship asserted about the subject of a claim."
+      }
+    ]
+  },
+  {
+    "@id": "_:N7a37a899f2994a3b888eebe785a80d9b",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#AllDisjointClasses"
+    ],
+    "http://www.w3.org/2002/07/owl#members": [
+      {
+        "@list": [
+          {
+            "@id": "http://www.example.org/claim-ontology#Claim"
+          },
+          {
+            "@id": "http://www.example.org/claim-ontology#Substantiation"
+          }
+        ]
+      }
+    ]
+  }
+]

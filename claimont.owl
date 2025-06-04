@@ -5,6 +5,8 @@
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
 	 xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+	 xmlns:schema="http://schema.org/"
+	 xmlns:dcterms="http://purl.org/dc/terms/"
 	 xmlns:terms="http://purl.org/dc/terms/">
 
 	<owl:Ontology rdf:about="http://www.example.org/claim-ontology">
@@ -78,25 +80,36 @@
 	</owl:AllDisjointClasses>	
 
 	<!-- Properties -->
-	<owl:ObjectProperty rdf:ID="isMadeBy">
-		<rdfs:domain rdf:resource="#Claim"/>
-		<rdfs:range rdf:resource="#Claimant"/>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:ID="isMadeBy">
-		<rdfs:domain rdf:resource="#Attestation"/>
-		<rdfs:range rdf:resource="#Attester"/>
-	</owl:ObjectProperty>	
-	
-	<owl:ObjectProperty rdf:ID="hasSubject">
-		<rdfs:domain rdf:resource="#Claim"/>
-		<rdfs:range rdf:resource="#Subject"/>
-	</owl:ObjectProperty>
+	<owl:ObjectProperty rdf:about="#isMadeBy">
+	<rdfs:domain>
+	<owl:Class>
+      <owl:unionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Claim"/>
+        <rdf:Description rdf:about="#Attestation"/>
+      </owl:unionOf>
+    </owl:Class>
+  	</rdfs:domain>
+  	<rdfs:range rdf:resource="#Claimant"/> <!-- or union again if needed -->
+  	</owl:ObjectProperty>	
 	
 	<owl:ObjectProperty rdf:ID="hasSubject">
-		<rdfs:domain rdf:resource="#Attestation"/>
-		<rdfs:range rdf:resource="#Claim"/>
-	</owl:ObjectProperty>	
+  <rdfs:domain>
+    <owl:Class>
+      <owl:unionOf rdf:parseType="Collection">
+        <owl:Class rdf:about="#Claim"/>
+        <owl:Class rdf:about="#Attestation"/>
+      </owl:unionOf>
+    </owl:Class>
+  </rdfs:domain>
+  <rdfs:range>
+    <owl:Class>
+      <owl:unionOf rdf:parseType="Collection">
+        <owl:Class rdf:about="#Subject"/>
+        <owl:Class rdf:about="#Claim"/>
+      </owl:unionOf>
+    </owl:Class>
+  </rdfs:range>
+</owl:ObjectProperty>	
 	
 	<owl:ObjectProperty rdf:ID="hasPredicate">
 		<rdfs:domain rdf:resource="#Claim"/>
@@ -129,7 +142,7 @@
 		<rdf:type rdf:resource="#IdentityClaim"/>
 		<isMadeBy rdf:resource="Alice"/>
 		<hasSubject rdf:resource="Alice"/>
-		<hasPredicate rdf:resource="hasEmailAddress"/>
+		<hasPredicate rdf:resource="schema:email"/>
 		<hasObject rdf:datatype="xsd:string">alice@example.com</hasObject>
 		<isSupportedBy rdf:resource="EmailVerificationReport1"/>
 	</owl:NamedIndividual>	
@@ -148,13 +161,16 @@
 		<rdf:type rdf:resource="#Claim"/>
 		<isMadeBy rdf:resource="Bob"/>
 		<hasSubject rdf:resource="Bob"/>
-		<hasPredicate rdf:resource="wasInLocationOnDate"/>
+		<hasPredicate rdf:resource="schema:location"/>
+		<hasObject rdf:datatype="xsd:string">London</hasObject>
+		<hasPredicate rdf:resource="dcterms:date"/>
+		<hasObject rdf:datatype="xsd:date">2025-03-20</hasObject>
 		<hasObject rdf:datatype="xsd:string">London on 20 March 2025</hasObject>
 	</owl:NamedIndividual>	
 
 	<owl:NamedIndividual rdf:ID="AirLineTicket578456">
 		<rdf:type rdf:resource="#Substantiation"/>
-		<supports rdf:resource="Claim2">
+		<supports rdf:resource="Claim2"/>
 	</owl:NamedIndividual>	
 
 	<owl:NamedIndividual rdf:ID="Jake">
