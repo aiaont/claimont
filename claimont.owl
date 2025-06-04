@@ -7,7 +7,6 @@
 	 xmlns:skos="http://www.w3.org/2004/02/skos/core#"
 	 xmlns:schema="http://schema.org/"
 	 xmlns:dcterms="http://purl.org/dc/terms/"
-	 xmlns:terms="http://purl.org/dc/terms/">
 
 	<owl:Ontology rdf:about="http://www.example.org/claim-ontology">
 		<terms:title xml:lang="en">Claim Ontology</terms:title>
@@ -80,6 +79,7 @@
 	</owl:AllDisjointClasses>	
 
 	<!-- Properties -->
+
 	<owl:ObjectProperty rdf:about="#isMadeBy">
 	<rdfs:domain>
 	<owl:Class>
@@ -110,7 +110,7 @@
     </owl:Class>
   </rdfs:range>
 </owl:ObjectProperty>	
-	
+
 	<owl:ObjectProperty rdf:ID="hasPredicate">
 		<rdfs:domain rdf:resource="#Claim"/>
 		<rdfs:range rdf:resource="#Predicate"/>
@@ -171,6 +171,7 @@
 	<owl:NamedIndividual rdf:ID="AirLineTicket578456">
 		<rdf:type rdf:resource="#Substantiation"/>
 		<supports rdf:resource="Claim2"/>
+in
 	</owl:NamedIndividual>	
 
 	<owl:NamedIndividual rdf:ID="Jake">
