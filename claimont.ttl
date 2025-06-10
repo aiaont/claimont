@@ -1,0 +1,129 @@
+@prefix : <http://www.example.org/claim-ontology#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<http://www.example.org/claim-ontology> a owl:Ontology ;
+    dcterms:description "An ontology for describing claims and their substantiation."@en ;
+    dcterms:title "Claim Ontology"@en .
+
+:AirLineTicket578456 a :Substantiation,
+        owl:NamedIndividual ;
+    :supports <http://www.example.org/Claim2> .
+
+:Alice a :Claimant,
+        owl:NamedIndividual .
+
+:Bob a :Claimant,
+        owl:NamedIndividual .
+
+:Claim1 a :IdentityClaim,
+        owl:NamedIndividual ;
+    :hasObject "alice@example.com"^^<xsd:string> ;
+    :hasPredicate <schema:email> ;
+    :hasSubject <http://www.example.org/Alice> ;
+    :isMadeBy <http://www.example.org/Alice> ;
+    :isSupportedBy <http://www.example.org/EmailVerificationReport1> .
+
+:Claim2 a :Claim,
+        owl:NamedIndividual ;
+    :hasObject "2025-03-20"^^<xsd:date>,
+        "London"^^<xsd:string>,
+        "London on 20 March 2025"^^<xsd:string> ;
+    :hasPredicate <dcterms:date>,
+        <schema:location> ;
+    :hasSubject <http://www.example.org/Bob> ;
+    :isMadeBy <http://www.example.org/Bob> .
+
+:EmailVerificationReport1 a :Report,
+        owl:NamedIndividual .
+
+:Jake a :Attester,
+        owl:NamedIndividual .
+
+:TestimonyOfFriendOfBob a :Attestation,
+        owl:NamedIndividual ;
+    :hasObject "true"^^<xsd:boolean> ;
+    :hasPredicate <http://www.example.org/is> ;
+    :hasSubject <http://www.example.org/Claim2> ;
+    :isMadeBy <http://www.example.org/Jake> .
+
+:comprisesClaims a owl:ObjectProperty ;
+    rdfs:domain :Claim ;
+    rdfs:range :Claim .
+
+:hasObject a owl:ObjectProperty ;
+    rdfs:domain :Claim ;
+    rdfs:range :Object .
+
+:hasPredicate a owl:ObjectProperty ;
+    rdfs:domain :Claim ;
+    rdfs:range :Predicate .
+
+:hasSubject a owl:ObjectProperty ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( :Claim :Attestation ) ] ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( :Subject :Claim ) ] .
+
+:isMadeBy a owl:ObjectProperty ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( :Claim :Attestation ) ] ;
+    rdfs:range :Claimant .
+
+:isSupportedBy a owl:ObjectProperty ;
+    rdfs:domain :Claim ;
+    rdfs:range :Substantiation ;
+    owl:inverseOf :supports .
+
+:Attester a owl:Class ;
+    rdfs:label "Attester" ;
+    skos:definition "An entity (person, organisation, system) that makes an attestation." .
+
+:IdentityClaim a owl:Class ;
+    rdfs:label "Identity Claim" ;
+    rdfs:subClassOf :Claim ;
+    skos:definition "A statement made by a claimant about their identity, usually with reference to some identification system." .
+
+:Object a owl:Class ;
+    rdfs:label "Object" ;
+    skos:definition "The target or value associated with the predicate in a claim." .
+
+:Predicate a owl:Class ;
+    rdfs:label "Predicate" ;
+    skos:definition "The characteristic, attribute, or relationship asserted about the subject of a claim." .
+
+:Report a owl:Class ;
+    rdfs:label "Report" ;
+    rdfs:subClassOf :Claim ;
+    skos:definition "A claim made according to some specification." .
+
+:Subject a owl:Class ;
+    rdfs:label "Subject" ;
+    owl:equivalentClass <owl:thing> ;
+    skos:definition "The thing about which a claim is made." .
+
+:Attestation a owl:Class ;
+    rdfs:label "Attestation" ;
+    rdfs:comment "A verifier's statement is an example of an attestation." ;
+    rdfs:subClassOf :Substantiation ;
+    skos:definition "An indefeasible statement, usually formal, made by an entity according to which they have witnessed or been presented with sufficient evidence to consider a specific claim made by another entity as truthful or accurate." .
+
+:Claimant a owl:Class ;
+    rdfs:label "Claimant" ;
+    skos:definition "An entity (person, organisation, system) that makes a claim." .
+
+:Substantiation a owl:Class ;
+    rdfs:label "Substantiation" ;
+    skos:definition "A thing presented in support of the truthfulness of a claim." .
+
+:Claim a owl:Class ;
+    rdfs:label "Claim" ;
+    rdfs:comment "A Claim may comprise other Claims." ;
+    skos:definition "A defeasible statement about a thing." .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( :Claim :Substantiation ) .
+
