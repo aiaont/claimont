@@ -21,5 +21,5 @@ RewriteCond %{HTTP_ACCEPT} application/rdf\+xml
 RewriteRule ^(index\.html)?$ https://cdn.jsdelivr.net/gh/aiaont/claimont@main/claimont.owl [R=303,L]
 
 # Fallback
-RewriteRule ^(index\.html)?$ https://cdn.jsdelivr.net/gh/aiaont/aiao@main/aiao.owl [R=303,L]
+RewriteRule ^(index\.html)?$ https://cdn.jsdelivr.net/gh/aiaont/claimont@main/claimont.owl [R=303,L]
 
