@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns="http://www.example.org/claim-ontology#"
-     xml:base="http://www.example.org/claim-ontology"
+<rdf:RDF xmlns="https://w3id.org/claimont#"
+     xml:base="https://w3id.org/claimont"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
 	 xmlns:skos="http://www.w3.org/2004/02/skos/core#"
 	 xmlns:schema="http://schema.org/"
-	 xmlns:dcterms="http://purl.org/dc/terms/"
+	 xmlns:dcterms="http://purl.org/dc/terms/">
 
-	<owl:Ontology rdf:about="http://www.example.org/claim-ontology">
-		<terms:title xml:lang="en">Claim Ontology</terms:title>
-		<terms:description xml:lang="en">An ontology for describing claims and their substantiation.</terms:description>
+	<owl:Ontology rdf:about="https://w3id.org/claimont">
+		<dcterms:title xml:lang="en">Claim Ontology</dcterms:title>
+		<dcterms:description xml:lang="en">An ontology for describing claims and their substantiation.</dcterms:description>
 	</owl:Ontology>
 
 	<!-- Classes with Definitions -->

@@ -283,7 +283,7 @@ td {
     <script id="schema.org" type="application/ld+json">
 [
   {
-    "@id": "http://www.example.org/claim-ontology",
+    "@id": "https://w3id.org/claimont",
     "@type": [
       "https://schema.org/DefinedTermSet"
     ],
@@ -314,7 +314,7 @@ td {
               <strong>IRI</strong>
             </dt>
             <dd>
-              <code>http://www.example.org/claim-ontology</code>
+              <code>https://w3id.org/claimont</code>
             </dd>
           </div>
           <div>
@@ -341,7 +341,7 @@ td {
             <tr>
               <th>IRI</th>
               <td>
-                <code>http://www.example.org/claim-ontology#Claim</code>
+                <code>https://w3id.org/claimont#Claim</code>
               </td>
             </tr>
             <tr>
@@ -363,6 +363,12 @@ td {
                 <ul>
                   <li>
                     <span>
+                      <a href="#claimedBy">claim is made by</a>
+                      <sup class="sup-op" title="OWL Object Property">op</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
                       <a href="#hasPredicate">hasPredicate</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
@@ -381,7 +387,7 @@ td {
                   </li>
                   <li>
                     <span>
-                      <a href="#isSupportedBy">isSupportedBy</a>
+                      <a href="#isSupportedBy">is supported by</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
@@ -393,10 +399,20 @@ td {
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">In Range Of</a>
               </th>
               <td>
-                <span>
-                  <a href="#comprisesClaims">comprisesClaims</a>
-                  <sup class="sup-op" title="OWL Object Property">op</sup>
-                </span>
+                <ul>
+                  <li>
+                    <span>
+                      <a href="#comprisesClaims">comprisesClaims</a>
+                      <sup class="sup-op" title="OWL Object Property">op</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="#supports">supports</a>
+                      <sup class="sup-op" title="OWL Object Property">op</sup>
+                    </span>
+                  </li>
+                </ul>
               </td>
             </tr>
             <tr>
@@ -430,7 +446,7 @@ td {
             <tr>
               <th>IRI</th>
               <td>
-                <code>http://www.example.org/claim-ontology#Claimant</code>
+                <code>https://w3id.org/claimont#Claimant</code>
               </td>
             </tr>
             <tr>
@@ -445,7 +461,7 @@ td {
               </th>
               <td>
                 <span>
-                  <a href="#isMadeBy">isMadeBy</a>
+                  <a href="#claimedBy">claim is made by</a>
                   <sup class="sup-op" title="OWL Object Property">op</sup>
                 </span>
               </td>
@@ -460,7 +476,7 @@ td {
             <tr>
               <th>IRI</th>
               <td>
-                <code>http://www.example.org/claim-ontology#Subject</code>
+                <code>https://w3id.org/claimont#Subject</code>
               </td>
             </tr>
             <tr>
@@ -487,7 +503,7 @@ td {
             <tr>
               <th>IRI</th>
               <td>
-                <code>http://www.example.org/claim-ontology#Predicate</code>
+                <code>https://w3id.org/claimont#Predicate</code>
               </td>
             </tr>
             <tr>
@@ -517,7 +533,7 @@ td {
             <tr>
               <th>IRI</th>
               <td>
-                <code>http://www.example.org/claim-ontology#Object</code>
+                <code>https://w3id.org/claimont#Object</code>
               </td>
             </tr>
             <tr>
@@ -547,7 +563,7 @@ td {
             <tr>
               <th>IRI</th>
               <td>
-                <code>http://www.example.org/claim-ontology#Substantiation</code>
+                <code>https://w3id.org/claimont#Substantiation</code>
               </td>
             </tr>
             <tr>
@@ -558,11 +574,22 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a>
+              </th>
+              <td>
+                <span>
+                  <a href="#supports">supports</a>
+                  <sup class="sup-op" title="OWL Object Property">op</sup>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">In Range Of</a>
               </th>
               <td>
                 <span>
-                  <a href="#isSupportedBy">isSupportedBy</a>
+                  <a href="#isSupportedBy">is supported by</a>
                   <sup class="sup-op" title="OWL Object Property">op</sup>
                 </span>
               </td>
@@ -588,7 +615,7 @@ td {
             <tr>
               <th>IRI</th>
               <td>
-                <code>http://www.example.org/claim-ontology#IdentityClaim</code>
+                <code>https://w3id.org/claimont#IdentityClaim</code>
               </td>
             </tr>
             <tr>
@@ -618,7 +645,7 @@ td {
             <tr>
               <th>IRI</th>
               <td>
-                <code>http://www.example.org/claim-ontology#Attestation</code>
+                <code>https://w3id.org/claimont#Attestation</code>
               </td>
             </tr>
             <tr>
@@ -643,6 +670,17 @@ td {
                 </span>
               </td>
             </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a>
+              </th>
+              <td>
+                <span>
+                  <a href="#attestedBy">attestation is made by</a>
+                  <sup class="sup-op" title="OWL Object Property">op</sup>
+                </span>
+              </td>
+            </tr>
           </table>
         </div>
         <div class="property entity" id="Attester">
@@ -653,7 +691,7 @@ td {
             <tr>
               <th>IRI</th>
               <td>
-                <code>http://www.example.org/claim-ontology#Attester</code>
+                <code>https://w3id.org/claimont#Attester</code>
               </td>
             </tr>
             <tr>
@@ -661,6 +699,17 @@ td {
                 <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
               </th>
               <td><p>An entity (person, organisation, system) that makes an attestation.</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">In Range Of</a>
+              </th>
+              <td>
+                <span>
+                  <a href="#attestedBy">attestation is made by</a>
+                  <sup class="sup-op" title="OWL Object Property">op</sup>
+                </span>
+              </td>
             </tr>
           </table>
         </div>
@@ -672,7 +721,7 @@ td {
             <tr>
               <th>IRI</th>
               <td>
-                <code>http://www.example.org/claim-ontology#Report</code>
+                <code>https://w3id.org/claimont#Report</code>
               </td>
             </tr>
             <tr>
@@ -697,15 +746,26 @@ td {
       </div>
       <div class="section" id="objectproperties">
         <h2>Object Properties</h2>
-        <div class="property entity" id="isMadeBy">
-          <h3>is made by
+        <div class="property entity" id="claimedBy">
+          <h3>claim is made by
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
           <table>
             <tr>
               <th>IRI</th>
               <td>
-                <code>http://www.example.org/claim-ontology#isMadeBy</code>
+                <code>https://w3id.org/claimont#claimedBy</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">Sub Property Of</a>
+              </th>
+              <td>
+                <span>
+                  <a href="#isMadeBy">is made by</a>
+                  <sup class="sup-op" title="OWL Object Property">op</sup>
+                </span>
               </td>
             </tr>
             <tr>
@@ -715,11 +775,6 @@ td {
               <td>
                 <span>
                   <a href="#Claim">Claim</a>
-                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
-                </span>
-                <span class="cardinality">or</span>
-                <span>
-                  <a href="#Attestation">Attestation</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -737,6 +792,86 @@ td {
             </tr>
           </table>
         </div>
+        <div class="property entity" id="attestedBy">
+          <h3>attestation is made by
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>https://w3id.org/claimont#attestedBy</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">Sub Property Of</a>
+              </th>
+              <td>
+                <span>
+                  <a href="#isMadeBy">is made by</a>
+                  <sup class="sup-op" title="OWL Object Property">op</sup>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+              </th>
+              <td>
+                <span>
+                  <a href="#Attestation">Attestation</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+              </th>
+              <td>
+                <span>
+                  <a href="#Attester">Attester</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="isMadeBy">
+          <h3>is made by
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>https://w3id.org/claimont#isMadeBy</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="https://w3id.org/profile/ontdoc/superPropertyOf" title="Inverse of RDFS' subPropertyOf. Defined in Ontology Documentation Profile">Super Property Of</a>
+              </th>
+              <td>
+                <ul>
+                  <li>
+                    <span>
+                      <a href="#claimedBy">claim is made by</a>
+                      <sup class="sup-op" title="OWL Object Property">op</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="#attestedBy">attestation is made by</a>
+                      <sup class="sup-op" title="OWL Object Property">op</sup>
+                    </span>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
         <div class="property entity" id="hasSubject">
           <h3>has subject
             <sup class="sup-op" title="OWL Object Property">op</sup>
@@ -745,7 +880,7 @@ td {
             <tr>
               <th>IRI</th>
               <td>
-                <code>http://www.example.org/claim-ontology#hasSubject</code>
+                <code>https://w3id.org/claimont#hasSubject</code>
               </td>
             </tr>
             <tr>
@@ -790,7 +925,7 @@ td {
             <tr>
               <th>IRI</th>
               <td>
-                <code>http://www.example.org/claim-ontology#hasPredicate</code>
+                <code>https://w3id.org/claimont#hasPredicate</code>
               </td>
             </tr>
             <tr>
@@ -825,7 +960,7 @@ td {
             <tr>
               <th>IRI</th>
               <td>
-                <code>http://www.example.org/claim-ontology#hasObject</code>
+                <code>https://w3id.org/claimont#hasObject</code>
               </td>
             </tr>
             <tr>
@@ -860,7 +995,7 @@ td {
             <tr>
               <th>IRI</th>
               <td>
-                <code>http://www.example.org/claim-ontology#comprisesClaims</code>
+                <code>https://w3id.org/claimont#comprisesClaims</code>
               </td>
             </tr>
             <tr>
@@ -895,8 +1030,14 @@ td {
             <tr>
               <th>IRI</th>
               <td>
-                <code>http://www.example.org/claim-ontology#isSupportedBy</code>
+                <code>https://w3id.org/claimont#isSupportedBy</code>
               </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Indicates that a claim is backed or reinforced by some form of substantiation or evidence.</p></td>
             </tr>
             <tr>
               <th>
@@ -922,13 +1063,54 @@ td {
             </tr>
           </table>
         </div>
+        <div class="property entity" id="supports">
+          <h3>supports
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>https://w3id.org/claimont#supports</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Indicates that a substantiation provides evidence or backing for a particular claim.</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+              </th>
+              <td>
+                <span>
+                  <a href="#Substantiation">Substantiation</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+              </th>
+              <td>
+                <span>
+                  <a href="#Claim">Claim</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
       </div>
       <div id="namespaces">
         <h2>Namespaces</h2>
         <dl>
           <dt id=":">:</dt>
           <dd>
-            <code>http://www.example.org/claim-ontology#</code>
+            <code>https://w3id.org/claimont#</code>
           </dd>
           <dt id="dcterms">dcterms</dt>
           <dd>
@@ -936,7 +1118,7 @@ td {
           </dd>
           <dt id="ns1">ns1</dt>
           <dd>
-            <code>http://www.example.org/</code>
+            <code>https://w3id.org/</code>
           </dd>
           <dt id="owl">owl</dt>
           <dd>
@@ -1038,6 +1220,12 @@ td {
           </h4>
           <ul class="second">
             <li>
+              <a href="#claimedBy">claim is made by</a>
+            </li>
+            <li>
+              <a href="#attestedBy">attestation is made by</a>
+            </li>
+            <li>
               <a href="#isMadeBy">is made by</a>
             </li>
             <li>
@@ -1054,6 +1242,9 @@ td {
             </li>
             <li>
               <a href="#isSupportedBy">is supported by</a>
+            </li>
+            <li>
+              <a href="#supports">supports</a>
             </li>
           </ul>
         </li>

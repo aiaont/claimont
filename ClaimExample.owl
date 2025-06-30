@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns="http://www.example.org/claim-ontology#"
-     xml:base="http://www.example.org/claim-ontology"
+<rdf:RDF xmlns="https://w3id.org/claimont#"
+     xml:base="https://w3id.org/claimont"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
