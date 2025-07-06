@@ -8,7 +8,7 @@ An ontology for describing claims and their substantiation.
 
 ## Overview
 
-The Claimont ontology provides a formal vocabulary for representing claims, the entities that make them, and the evidence that supports them. It is designed to model both defeasible claims (which can be challenged or overturned) and the various forms of substantiation that support or refute them. It is meant to be used together with the Anthropogenic Impact Accounting Ontology (AIAO: https://w3id.org/aiao) and the 
+The Claimont ontology provides a formal vocabulary for representing claims, the entities that make them, and the evidence that supports them. It is designed to model both defeasible claims (which can be challenged or overturned) and the various forms of substantiation that support or refute them. It is meant to be used together with the Anthropogenic Impact Accounting Ontology (AIAO: https://w3id.org/aiao), the 
 Information and Communication Ontology (https://w3id.org/infocomm) and the Impact Ontology (https://w3id/org/impactonr)
 
 ## Core Classes
