@@ -61,7 +61,7 @@
 	
 	<owl:Class rdf:ID="Attester">
 		<rdfs:label>Attester</rdfs:label>
-		<skos:definition>An entity (person, organisation, system) that makes an attestation.</skos:definition>
+		<skos:definition>An entity (person, organisation, system, etc.) that makes an attestation.</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:ID="Report">
