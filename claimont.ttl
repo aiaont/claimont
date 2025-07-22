@@ -1,0 +1,107 @@
+@prefix : <https://w3id.org/claimont#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://w3id.org/claimont> a owl:Ontology ;
+    dcterms:description "An ontology for describing claims and their substantiation."@en ;
+    dcterms:title "Claim Ontology"@en .
+
+:IdentityClaim a owl:Class ;
+    rdfs:label "Identity Claim" ;
+    rdfs:subClassOf :Claim ;
+    skos:definition "A statement made by a claimant about their identity, usually with reference to some identification system." .
+
+:Report a owl:Class ;
+    rdfs:label "Report" ;
+    rdfs:subClassOf :Claim ;
+    skos:definition "A claim made according to some specification." .
+
+:attestedBy a owl:ObjectProperty ;
+    rdfs:label "attestation is made by" ;
+    rdfs:domain :Attestation ;
+    rdfs:range :Attester ;
+    rdfs:subPropertyOf :isMadeBy .
+
+:claimedBy a owl:ObjectProperty ;
+    rdfs:label "claim is made by" ;
+    rdfs:domain :Claim ;
+    rdfs:range :Claimant ;
+    rdfs:subPropertyOf :isMadeBy .
+
+:comprisesClaims a owl:ObjectProperty ;
+    rdfs:domain :Claim ;
+    rdfs:range :Claim .
+
+:hasObject a owl:ObjectProperty ;
+    rdfs:domain :Claim ;
+    rdfs:range :Object .
+
+:hasPredicate a owl:ObjectProperty ;
+    rdfs:domain :Claim ;
+    rdfs:range :Predicate .
+
+:hasSubject a owl:ObjectProperty ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( :Claim :Attestation ) ] ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( :Subject :Claim ) ] .
+
+:Attester a owl:Class ;
+    rdfs:label "Attester" ;
+    skos:definition "An entity (person, organisation, system) that makes an attestation." .
+
+:Claimant a owl:Class ;
+    rdfs:label "Claimant" ;
+    skos:definition "An entity (person, organisation, system) that makes a claim." .
+
+:Object a owl:Class ;
+    rdfs:label "Object" ;
+    skos:definition "The target or value associated with the predicate in a claim." .
+
+:Predicate a owl:Class ;
+    rdfs:label "Predicate" ;
+    skos:definition "The characteristic, attribute, or relationship asserted about the subject of a claim." .
+
+:Subject a owl:Class ;
+    rdfs:label "Subject" ;
+    owl:equivalentClass <owl:thing> ;
+    skos:definition "The thing about which a claim is made." .
+
+:isSupportedBy a owl:ObjectProperty ;
+    rdfs:label "is supported by" ;
+    rdfs:domain :Claim ;
+    rdfs:range :Substantiation ;
+    owl:inverseOf :supports ;
+    skos:definition "Indicates that a claim is backed or reinforced by some form of substantiation or evidence." .
+
+:supports a owl:ObjectProperty ;
+    rdfs:label "supports" ;
+    rdfs:domain :Substantiation ;
+    rdfs:range :Claim ;
+    owl:inverseOf :isSupportedBy ;
+    skos:definition "Indicates that a substantiation provides evidence or backing for a particular claim." .
+
+:Attestation a owl:Class ;
+    rdfs:label "Attestation" ;
+    rdfs:comment "A verifier's statement is an example of an attestation." ;
+    rdfs:subClassOf :Substantiation ;
+    skos:definition "An indefeasible statement, usually formal, made by an entity according to which they have witnessed or been presented with sufficient evidence to consider a specific claim made by another entity as truthful or accurate." .
+
+:isMadeBy a owl:ObjectProperty ;
+    rdfs:label "is made by" .
+
+:Substantiation a owl:Class ;
+    rdfs:label "Substantiation" ;
+    skos:definition "A thing presented in support of the truthfulness of a claim." .
+
+:Claim a owl:Class ;
+    rdfs:label "Claim" ;
+    rdfs:comment "A Claim may comprise other Claims." ;
+    skos:definition "A defeasible statement about a thing." .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( :Claim :Substantiation ) .
+

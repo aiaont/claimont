@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="https://w3id.org/claimont#"
+     xml:base="https://w3id.org/claimont"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:schema="http://schema.org/"
+     xmlns:dcterms="http://purl.org/dc/terms/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+<!-- Example 1: Alice's Identity Claim -->
+
+    <owl:NamedIndividual rdf:ID="Alice">
+        <rdf:type rdf:resource="#Claimant"/>
+    </owl:NamedIndividual>	
+
+    <owl:NamedIndividual rdf:ID="Claim1">
+        <rdf:type rdf:resource="#IdentityClaim"/>
+        <claimedBy rdf:resource="#Alice"/>
+        <hasSubject rdf:resource="#Alice"/>
+        <hasPredicate rdf:resource="schema:email"/>
+        <hasObject rdf:datatype="xsd:string">alice@example.com</hasObject>
+        <isSupportedBy rdf:resource="#EmailVerificationReport1"/>
+    </owl:NamedIndividual>	
+
+    <owl:NamedIndividual rdf:ID="EmailVerificationReport1">
+        <rdf:type rdf:resource="#Report"/>
+    </owl:NamedIndividual>	  
+  
+    <!-- Example 2: Bob's Location Claim -->
+
+    <owl:NamedIndividual rdf:ID="Bob">
+        <rdf:type rdf:resource="#Claimant"/>
+    </owl:NamedIndividual>	
+
+    <owl:NamedIndividual rdf:ID="Claim2">
+        <rdf:type rdf:resource="#Claim"/>
+        <claimedBy rdf:resource="#Bob"/>
+        <hasSubject rdf:resource="#Bob"/>
+        <hasPredicate rdf:resource="schema:location"/>
+        <hasObject rdf:datatype="xsd:string">London on 20 March 2025</hasObject>
+    </owl:NamedIndividual>	
+
+    <owl:NamedIndividual rdf:ID="AirLineTicket578456">
+        <rdf:type rdf:resource="#Substantiation"/>
+        <supports rdf:resource="#Claim2"/>
+    </owl:NamedIndividual>	
+
+    <owl:NamedIndividual rdf:ID="Jake">
+        <rdf:type rdf:resource="#Attester"/>
+    </owl:NamedIndividual>	
+
+   <owl:NamedIndividual rdf:ID="JakesTestimony">
+    <rdf:type rdf:resource="#Attestation"/>
+    <attestedBy rdf:resource="#Jake"/>
+    <hasSubject rdf:resource="#Bob"/>
+    <hasPredicate rdf:resource="schema:location"/>
+    <hasObject rdf:datatype="xsd:string">London on 20 March 2025</hasObject>
+    <supports rdf:resource="#Claim2"/>
+</owl:NamedIndividual>
+
+</rdf:RDF>
