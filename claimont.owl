@@ -6,7 +6,8 @@
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
 	 xmlns:skos="http://www.w3.org/2004/02/skos/core#"
 	 xmlns:schema="http://schema.org/"
-	 xmlns:dcterms="http://purl.org/dc/terms/">
+	 xmlns:dcterms="http://purl.org/dc/terms/"
+	 xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
 
 	<owl:Ontology rdf:about="https://w3id.org/claimont">
 		<dcterms:title xml:lang="en">Claim Ontology</dcterms:title>
@@ -18,27 +19,28 @@
 		<rdfs:label>Claim</rdfs:label>
 		<skos:definition>A defeasible statement about a thing.</skos:definition>
 		<rdfs:comment>A Claim may comprise other Claims.</rdfs:comment>	
+		<rdfs:subClassOf rdf:resource="http://docs.oasis-open.org/legalruleml/ns/v1.0/Statement"/>
 	</owl:Class>	
 	
 	<owl:Class rdf:ID="Claimant">
 		<rdfs:label>Claimant</rdfs:label>
-		<skos:definition>An entity (person, organisation, system) that makes a claim.</skos:definition>
+		<skos:definition>An entity (e.g., a person, an organisation or a system) that makes a claim.</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:ID="Subject">
 		<rdfs:label>Subject</rdfs:label>
-		<skos:definition>The thing about which a claim is made.</skos:definition>
-		<owl:equivalentClass rdf:resource="owl:thing"/>
+		<skos:definition>The thing about which a statement (i.e., a claim or an attestation) is made.</skos:definition>
+		<owl:equivalentClass rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
 	</owl:Class>
 	
 	<owl:Class rdf:ID="Predicate">
 		<rdfs:label>Predicate</rdfs:label>
-		<skos:definition>The characteristic, attribute, or relationship asserted about the subject of a claim.</skos:definition>
+		<skos:definition>The characteristic, attribute, or relationship asserted about the subject of a claim or an attestation.</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:ID="Object">
 		<rdfs:label>Object</rdfs:label>
-		<skos:definition>The target or value associated with the predicate in a claim.</skos:definition>
+		<skos:definition>The target or value associated with the predicate of a claim or an attestation.</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:ID="Substantiation">
@@ -54,6 +56,7 @@
 
 	<owl:Class rdf:ID="Attestation">
 		<rdfs:subClassOf rdf:resource="#Substantiation"/>
+		<rdfs:subClassOf rdf:resource="http://docs.oasis-open.org/legalruleml/ns/v1.0/Statement"/>
 		<rdfs:label>Attestation</rdfs:label>
 		<skos:definition>An indefeasible statement, usually formal, made by an entity according to which they have witnessed or been presented with sufficient evidence to consider a specific claim made by another entity as truthful or accurate.</skos:definition>
 		<rdfs:comment>A verifier's statement is an example of an attestation.</rdfs:comment>
@@ -61,7 +64,9 @@
 	
 	<owl:Class rdf:ID="Attester">
 		<rdfs:label>Attester</rdfs:label>
-		<skos:definition>An entity (person, organisation, system, etc.) that makes an attestation.</skos:definition>
+
+		<skos:definition>An entity (e.g., a person, an organisation or a system) that makes an attestation.</skos:definition>
+
 	</owl:Class>
 	
 	<owl:Class rdf:ID="Report">
@@ -80,42 +85,19 @@
 
 	<!-- Properties -->
 
-	<owl:ObjectProperty rdf:ID="claimedBy">
-		<rdfs:subPropertyOf rdf:resource="#isMadeBy"/>
-		<rdfs:domain rdf:resource="#Claim"/>
-		<rdfs:range rdf:resource="#Claimant"/>
-		<rdfs:label>claim is made by</rdfs:label>
-	</owl:ObjectProperty>
-
-	<owl:ObjectProperty rdf:ID="attestedBy">
-		<rdfs:subPropertyOf rdf:resource="#isMadeBy"/>
-		<rdfs:domain rdf:resource="#Attestation"/>
-		<rdfs:range rdf:resource="#Attester"/>
-		<rdfs:label>attestation is made by</rdfs:label>
-	</owl:ObjectProperty>
-
 	<owl:ObjectProperty rdf:ID="isMadeBy">
 		<rdfs:label>is made by</rdfs:label>
-		<!-- No domain/range restrictions on the parent -->
+		<rdfs:domain rdf:resource="#Claim"/>
+		<rdfs:range rdf:resource="#Claimant"/>
+		<rdfs:domain rdf:resource="#Attestation"/>
+		<rdfs:range rdf:resource="#Attester"/>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:ID="hasSubject">
-  <rdfs:domain>
-    <owl:Class>
-      <owl:unionOf rdf:parseType="Collection">
-        <owl:Class rdf:about="#Claim"/>
-        <owl:Class rdf:about="#Attestation"/>
-      </owl:unionOf>
-    </owl:Class>
-  </rdfs:domain>
-  <rdfs:range>
-    <owl:Class>
-      <owl:unionOf rdf:parseType="Collection">
-        <owl:Class rdf:about="#Subject"/>
-        <owl:Class rdf:about="#Claim"/>
-      </owl:unionOf>
-    </owl:Class>
-  </rdfs:range>
+	<rdfs:domain rdf:resource="#Claim"/>
+	<rdfs:domain rdf:resource="#Attestation"/>
+	<rdfs:range rdf:resource="#Subject"/>
+	<rdfs:range rdf:resource="#Claim"/>
 </owl:ObjectProperty>	
 
 	<owl:ObjectProperty rdf:ID="hasPredicate">

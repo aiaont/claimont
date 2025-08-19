@@ -1,5 +1,6 @@
 @prefix : <https://w3id.org/claimont#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix lrml: <http://docs.oasis-open.org/legalruleml/ns/v1.0/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -19,18 +20,6 @@
     rdfs:subClassOf :Claim ;
     skos:definition "A claim made according to some specification." .
 
-:attestedBy a owl:ObjectProperty ;
-    rdfs:label "attestation is made by" ;
-    rdfs:domain :Attestation ;
-    rdfs:range :Attester ;
-    rdfs:subPropertyOf :isMadeBy .
-
-:claimedBy a owl:ObjectProperty ;
-    rdfs:label "claim is made by" ;
-    rdfs:domain :Claim ;
-    rdfs:range :Claimant ;
-    rdfs:subPropertyOf :isMadeBy .
-
 :comprisesClaims a owl:ObjectProperty ;
     rdfs:domain :Claim ;
     rdfs:range :Claim .
@@ -44,31 +33,38 @@
     rdfs:range :Predicate .
 
 :hasSubject a owl:ObjectProperty ;
-    rdfs:domain [ a owl:Class ;
-            owl:unionOf ( :Claim :Attestation ) ] ;
-    rdfs:range [ a owl:Class ;
-            owl:unionOf ( :Subject :Claim ) ] .
+    rdfs:domain :Attestation,
+        :Claim ;
+    rdfs:range :Claim,
+        :Subject .
+
+:isMadeBy a owl:ObjectProperty ;
+    rdfs:label "is made by" ;
+    rdfs:domain :Attestation,
+        :Claim ;
+    rdfs:range :Attester,
+        :Claimant .
 
 :Attester a owl:Class ;
     rdfs:label "Attester" ;
-    skos:definition "An entity (person, organisation, system) that makes an attestation." .
+    skos:definition "An entity (e.g., a person, an organisation or a system) that makes an attestation." .
 
 :Claimant a owl:Class ;
     rdfs:label "Claimant" ;
-    skos:definition "An entity (person, organisation, system) that makes a claim." .
+    skos:definition "An entity (e.g., a person, an organisation or a system) that makes a claim." .
 
 :Object a owl:Class ;
     rdfs:label "Object" ;
-    skos:definition "The target or value associated with the predicate in a claim." .
+    skos:definition "The target or value associated with the predicate of a claim or an attestation." .
 
 :Predicate a owl:Class ;
     rdfs:label "Predicate" ;
-    skos:definition "The characteristic, attribute, or relationship asserted about the subject of a claim." .
+    skos:definition "The characteristic, attribute, or relationship asserted about the subject of a claim or an attestation." .
 
 :Subject a owl:Class ;
     rdfs:label "Subject" ;
-    owl:equivalentClass <owl:thing> ;
-    skos:definition "The thing about which a claim is made." .
+    owl:equivalentClass owl:Thing ;
+    skos:definition "The thing about which a statement (i.e., a claim or an attestation) is made." .
 
 :isSupportedBy a owl:ObjectProperty ;
     rdfs:label "is supported by" ;
@@ -87,11 +83,9 @@
 :Attestation a owl:Class ;
     rdfs:label "Attestation" ;
     rdfs:comment "A verifier's statement is an example of an attestation." ;
-    rdfs:subClassOf :Substantiation ;
+    rdfs:subClassOf lrml:Statement,
+        :Substantiation ;
     skos:definition "An indefeasible statement, usually formal, made by an entity according to which they have witnessed or been presented with sufficient evidence to consider a specific claim made by another entity as truthful or accurate." .
-
-:isMadeBy a owl:ObjectProperty ;
-    rdfs:label "is made by" .
 
 :Substantiation a owl:Class ;
     rdfs:label "Substantiation" ;
@@ -100,6 +94,7 @@
 :Claim a owl:Class ;
     rdfs:label "Claim" ;
     rdfs:comment "A Claim may comprise other Claims." ;
+    rdfs:subClassOf lrml:Statement ;
     skos:definition "A defeasible statement about a thing." .
 
 [] a owl:AllDisjointClasses ;
