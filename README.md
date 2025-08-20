@@ -8,7 +8,7 @@ An ontology for describing claims and their substantiation.
 
 ## Overview
 
-The Claim Ontology provides a formal framework for representing claims, the entities that make them, and the evidence that supports them. It is designed to model defeasible claims (which can be challenged or overturned) as well as the various forms of substantiation that support or refute them. It is meant to be used together with the Anthropogenic Impact Accounting Ontology (https://w3id.org/aiao), the Information Communication Ontology (https://w3id.org/infocomm) and the Impact Ontology (https://w3id/org/impactont).
+The Claim Ontology provides a formal semantic framework for representing claims, the entities that make them, and the evidence that supports them. It is designed to model defeasible claims (which can be challenged or overturned) as well as the various forms of substantiation that support or refute them. It is meant to be used together with the Anthropogenic Impact Accounting Ontology (https://w3id.org/aiao), the Information Communication Ontology (https://w3id.org/infocomm) and the Impact Ontology (https://w3id/org/impactont).
 
 ## Core Classes
 
