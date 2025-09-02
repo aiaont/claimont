@@ -154,16 +154,88 @@ def render_html(g: Graph, base_name: str, output_path: str) -> None:
 
     ontology = collect_ontology_info(g)
     ensure_default_prefix(g, ontology.get("iri"))
+
+    # Ensure common, human-friendly prefixes are available for qnames
+    def ensure_common_prefixes(graph: Graph) -> None:
+        common = {
+            'rdf': RDF,
+            'rdfs': RDFS,
+            'owl': OWL,
+            'skos': SKOS,
+            'dcterms': DCTERMS,
+        }
+        for pref, ns in common.items():
+            try:
+                graph.namespace_manager.bind(pref, ns, replace=False)
+            except Exception:
+                pass
+    ensure_common_prefixes(g)
+
     classes = collect_classes(g)
     properties = collect_properties(g)
 
     # Compute used prefixes by scanning all triples (subjects, predicates, objects)
     prefixes = compute_used_prefixes(g)
 
+    # Build lookup sets for internal anchors
+    class_iris: Set[str] = {c["iri"] for c in classes}
+    prop_iris: Set[str] = {p["iri"] for p in properties}
+
+    def anchor_id(kind: str, q: str) -> str:
+        return f"#{kind}-" + q.replace(':', '-').replace('/', '-').replace('#', '-')
+
+    def make_link(term: URIRef, kind_hint: Optional[str] = None) -> Dict[str, str]:
+        q = qname(g, term)
+        iri = str(term)
+        href = iri
+        if iri in class_iris or kind_hint == 'cls':
+            href = anchor_id('cls', q)
+        elif iri in prop_iris or kind_hint == 'prop':
+            href = anchor_id('prop', q)
+        return {"text": q, "href": href}
+
+    # Enrich classes with backlinks and property participation
+    enriched_classes: List[Dict[str, Any]] = []
+    for c in classes:
+        s = rdflib.term.URIRef(c["iri"])
+        sub_links = [make_link(o) for o in g.objects(s, RDFS.subClassOf) if isinstance(o, URIRef)]
+        super_links = [make_link(x) for x in g.subjects(RDFS.subClassOf, s) if isinstance(x, URIRef)]
+        in_domain_of = [make_link(x, 'prop') for x in g.subjects(RDFS.domain, s) if isinstance(x, URIRef)]
+        in_range_of = [make_link(x, 'prop') for x in g.subjects(RDFS.range, s) if isinstance(x, URIRef)]
+        c2 = dict(c)
+        c2.update({
+            "anchor": anchor_id('cls', c["qname"]),
+            "subClassOf": sub_links,
+            "superClassOf": super_links,
+            "inDomainOf": in_domain_of,
+            "inRangeOf": in_range_of,
+        })
+        enriched_classes.append(c2)
+
+    # Enrich properties with linked references
+    enriched_properties: List[Dict[str, Any]] = []
+    for p in properties:
+        s = rdflib.term.URIRef(p["iri"])
+        dom = [make_link(o, 'cls') for o in g.objects(s, RDFS.domain) if isinstance(o, URIRef)]
+        rng = [make_link(o, 'cls') for o in g.objects(s, RDFS.range) if isinstance(o, URIRef)]
+        subs = [make_link(o, 'prop') for o in g.objects(s, RDFS.subPropertyOf) if isinstance(o, URIRef)]
+        invs_set: Set[URIRef] = set(o for o in g.objects(s, OWL.inverseOf) if isinstance(o, URIRef))
+        invs_set |= set(x for x in g.subjects(OWL.inverseOf, s) if isinstance(x, URIRef))
+        invs = [make_link(u, 'prop') for u in sorted(invs_set, key=lambda u: qname(g, u))]
+        p2 = dict(p)
+        p2.update({
+            "anchor": anchor_id('prop', p["qname"]),
+            "domain": dom,
+            "range": rng,
+            "subPropertyOf": subs,
+            "inverses": invs,
+        })
+        enriched_properties.append(p2)
+
     html = tmpl.render(
         ontology=ontology,
-        classes=classes,
-        properties=properties,
+        classes=enriched_classes,
+        properties=enriched_properties,
         prefixes=prefixes,
         base_name=base_name,
     )
