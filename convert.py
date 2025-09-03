@@ -71,6 +71,10 @@ def get_definitions(graph: Graph, s: URIRef) -> List[Literal]:
     return [o for o in graph.objects(s, SKOS.definition) if isinstance(o, Literal)]
 
 
+def get_examples(graph: Graph, s: URIRef) -> List[Literal]:
+    return [o for o in graph.objects(s, SKOS.example) if isinstance(o, Literal)]
+
+
 def collect_ontology_info(g: Graph) -> Dict[str, Any]:
     info: Dict[str, Any] = {}
     ontologies = list(g.subjects(RDF.type, OWL.Ontology))
@@ -98,6 +102,7 @@ def collect_classes(g: Graph) -> List[Dict[str, Any]]:
             "label": str(label) if label else qname(g, s),
             "labels": labels,
             "definitions": get_definitions(g, s),
+            "examples": get_examples(g, s),
             "comments": get_comments(g, s),
             "subClassOf": [qname(g, o) for o in g.objects(s, RDFS.subClassOf) if isinstance(o, URIRef)],
         }
@@ -124,6 +129,7 @@ def collect_properties(g: Graph) -> List[Dict[str, Any]]:
             "label": str(label) if label else qname(g, s),
             "labels": labels,
             "definitions": get_definitions(g, s),
+            "examples": get_examples(g, s),
             "comments": get_comments(g, s),
             "domain": [qname(g, o) for o in g.objects(s, RDFS.domain) if isinstance(o, URIRef)],
             "range": [qname(g, o) for o in g.objects(s, RDFS.range) if isinstance(o, URIRef)],
