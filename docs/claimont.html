@@ -11,14 +11,8 @@
       --muted: #555;
       --line: #e5e7eb;
       --accent: #2563eb;
+      --badge: #0ea5e9;
       --code-bg: #f3f4f6;
-      /* Semantic accents */
-      --def-accent: #0ea5e9;  /* cyan */
-      --def-bg: #f0f9ff;
-      --ex-accent: #10b981;   /* green */
-      --ex-bg: #ecfdf5;
-      --desc-accent: #a855f7; /* purple */
-      --desc-bg: #f5f3ff;
     }
     html, body { background: var(--bg); color: var(--fg); font: 16px/1.55 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, sans-serif; }
     a { color: var(--accent); text-decoration: none; }
@@ -39,14 +33,8 @@
     .kv { display: grid; grid-template-columns: 160px 1fr; gap: .25rem .75rem; margin-top: .5rem; }
     .kv div.key { color: var(--muted); }
     code { background: var(--code-bg); padding: .1rem .25rem; border-radius: 4px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size: .9em; }
-    .badge { display: inline-block; font-size: .75rem; padding: .1rem .4rem; border-radius: .5rem; color: #fff; margin-right: .5rem; }
-    .badge--def { background: var(--def-accent); }
-    .badge--ex { background: var(--ex-accent); }
-    .badge--desc { background: var(--desc-accent); }
-    .defblock { padding: .5rem .75rem; border-radius: 4px; margin: .5rem 0 .75rem; border-left: 4px solid transparent; }
-    .defblock--def { border-left-color: var(--def-accent); background: var(--def-bg); }
-    .defblock--ex { border-left-color: var(--ex-accent); background: var(--ex-bg); }
-    .defblock--desc { border-left-color: var(--desc-accent); background: var(--desc-bg); }
+    .badge { display: inline-block; font-size: .75rem; padding: .1rem .4rem; border-radius: .5rem; background: var(--badge); color: #fff; margin-right: .5rem; }
+    .defblock { border-left: 4px solid var(--badge); padding: .5rem .75rem; background: #f0f9ff; border-radius: 4px; margin: .5rem 0 .75rem; }
     .comment { margin: .25rem 0; }
     .section-title { font-weight: 600; margin-top: .25rem; }
     .prefixes { margin-top: .5rem; font-size: .9rem; }
@@ -58,7 +46,7 @@
   <div class="wrap">
     <header>
       <h1>Claim Ontology</h1>
-<div class="iri">IRI: <code>https://w3id.org/claimont</code></div>      <div class="desc defblock defblock--desc"><span class="badge badge--desc">Description</span> An ontology for describing claims and their substantiation.</div>
+<div class="iri">IRI: <code>https://w3id.org/claimont</code></div>      <div class="desc defblock"><span class="badge">Description</span> An ontology for describing claims and their substantiation.</div>
       <div class="prefixes">
         Prefixes:
           <code>:: &lt;https://w3id.org/claimont#&gt;</code><br />
@@ -80,7 +68,7 @@
               <a href="#cls--Attestation">Attestation</a>,               <a href="#cls--Attester">Attester</a>,               <a href="#cls--Claim">Claim</a>,               <a href="#cls--Claimant">Claimant</a>,               <a href="#cls--IdentityClaim">Identity Claim</a>,               <a href="#cls--Object">Object</a>,               <a href="#cls--Predicate">Predicate</a>,               <a href="#cls--Report">Report</a>,               <a href="#cls--Subject">Subject</a>,               <a href="#cls--Substantiation">Substantiation</a>          </div>
           <div class="key">Properties</div>
           <div>
-              <a href="#prop--comprisesClaims">:comprisesClaims</a>,               <a href="#prop--hasObject">:hasObject</a>,               <a href="#prop--hasPredicate">:hasPredicate</a>,               <a href="#prop--hasSubject">:hasSubject</a>,               <a href="#prop--isMadeBy">is made by</a>,               <a href="#prop--isSupportedBy">is supported by</a>,               <a href="#prop--supports">supports</a>          </div>
+              <a href="#prop--comprisesClaims">comprisesClaims</a>,               <a href="#prop--hasObject">hasObject</a>,               <a href="#prop--hasPredicate">hasPredicate</a>,               <a href="#prop--hasSubject">hasSubject</a>,               <a href="#prop--isMadeBy">isMadeBy</a>,               <a href="#prop--isSupportedBy">isSupportedBy</a>,               <a href="#prop--supports">supports</a>          </div>
       </div>
     </section>
 
@@ -91,12 +79,11 @@
             <h3>Attestation</h3>
             <div class="meta">IRI: <code>https://w3id.org/claimont#Attestation</code></div>
 
-              <div class="section-title"><span class="badge badge--def">SKOS</span>Definition</div>
-                <div class="defblock defblock--def">An indefeasible statement, usually formal, made by an entity according to which they have witnessed or been presented with sufficient evidence to consider a specific claim made by another entity as truthful or accurate.</div>
+              <div class="section-title"><span class="badge">SKOS</span>Definition</div>
+                <div class="defblock">An indefeasible statement, usually formal, made by an entity according to which they have witnessed or been presented with sufficient evidence to consider a specific claim made by another entity as truthful or accurate.</div>
 
               <div class="section-title">Comments</div>
                 <div class="comment">A verifier's statement is an example of an attestation.</div>
-
 
             <div class="kv">
                 <div class="key">SubClass Of</div>
@@ -111,9 +98,8 @@
             <h3>Attester</h3>
             <div class="meta">IRI: <code>https://w3id.org/claimont#Attester</code></div>
 
-              <div class="section-title"><span class="badge badge--def">SKOS</span>Definition</div>
-                <div class="defblock defblock--def">An entity (e.g., a person, an organisation or a system) that makes an attestation.</div>
-
+              <div class="section-title"><span class="badge">SKOS</span>Definition</div>
+                <div class="defblock">An entity (e.g., a person, an organisation or a system) that makes an attestation.</div>
 
 
             <div class="kv">
@@ -126,12 +112,11 @@
             <h3>Claim</h3>
             <div class="meta">IRI: <code>https://w3id.org/claimont#Claim</code></div>
 
-              <div class="section-title"><span class="badge badge--def">SKOS</span>Definition</div>
-                <div class="defblock defblock--def">A defeasible statement about a thing.</div>
+              <div class="section-title"><span class="badge">SKOS</span>Definition</div>
+                <div class="defblock">A defeasible statement about a thing.</div>
 
               <div class="section-title">Comments</div>
                 <div class="comment">A Claim may comprise other Claims.</div>
-
 
             <div class="kv">
                 <div class="key">SubClass Of</div>
@@ -152,9 +137,8 @@
             <h3>Claimant</h3>
             <div class="meta">IRI: <code>https://w3id.org/claimont#Claimant</code></div>
 
-              <div class="section-title"><span class="badge badge--def">SKOS</span>Definition</div>
-                <div class="defblock defblock--def">An entity (e.g., a person, an organisation or a system) that makes a claim.</div>
-
+              <div class="section-title"><span class="badge">SKOS</span>Definition</div>
+                <div class="defblock">An entity (e.g., a person, an organisation or a system) that makes a claim.</div>
 
 
             <div class="kv">
@@ -167,9 +151,8 @@
             <h3>Identity Claim</h3>
             <div class="meta">IRI: <code>https://w3id.org/claimont#IdentityClaim</code></div>
 
-              <div class="section-title"><span class="badge badge--def">SKOS</span>Definition</div>
-                <div class="defblock defblock--def">A statement made by a claimant about their identity, usually with reference to some identification system.</div>
-
+              <div class="section-title"><span class="badge">SKOS</span>Definition</div>
+                <div class="defblock">A statement made by a claimant about their identity, usually with reference to some identification system.</div>
 
 
             <div class="kv">
@@ -182,9 +165,8 @@
             <h3>Object</h3>
             <div class="meta">IRI: <code>https://w3id.org/claimont#Object</code></div>
 
-              <div class="section-title"><span class="badge badge--def">SKOS</span>Definition</div>
-                <div class="defblock defblock--def">The target or value associated with the predicate of a claim or an attestation.</div>
-
+              <div class="section-title"><span class="badge">SKOS</span>Definition</div>
+                <div class="defblock">The target or value associated with the predicate of a claim or an attestation.</div>
 
 
             <div class="kv">
@@ -197,9 +179,8 @@
             <h3>Predicate</h3>
             <div class="meta">IRI: <code>https://w3id.org/claimont#Predicate</code></div>
 
-              <div class="section-title"><span class="badge badge--def">SKOS</span>Definition</div>
-                <div class="defblock defblock--def">The characteristic, attribute, or relationship asserted about the subject of a claim or an attestation.</div>
-
+              <div class="section-title"><span class="badge">SKOS</span>Definition</div>
+                <div class="defblock">The characteristic, attribute, or relationship asserted about the subject of a claim or an attestation.</div>
 
 
             <div class="kv">
@@ -212,9 +193,8 @@
             <h3>Report</h3>
             <div class="meta">IRI: <code>https://w3id.org/claimont#Report</code></div>
 
-              <div class="section-title"><span class="badge badge--def">SKOS</span>Definition</div>
-                <div class="defblock defblock--def">A claim made according to some specification.</div>
-
+              <div class="section-title"><span class="badge">SKOS</span>Definition</div>
+                <div class="defblock">A claim made according to some specification.</div>
 
 
             <div class="kv">
@@ -227,9 +207,8 @@
             <h3>Subject</h3>
             <div class="meta">IRI: <code>https://w3id.org/claimont#Subject</code></div>
 
-              <div class="section-title"><span class="badge badge--def">SKOS</span>Definition</div>
-                <div class="defblock defblock--def">The thing about which a statement (i.e., a claim or an attestation) is made.</div>
-
+              <div class="section-title"><span class="badge">SKOS</span>Definition</div>
+                <div class="defblock">The thing about which a statement (i.e., a claim or an attestation) is made.</div>
 
 
             <div class="kv">
@@ -242,9 +221,8 @@
             <h3>Substantiation</h3>
             <div class="meta">IRI: <code>https://w3id.org/claimont#Substantiation</code></div>
 
-              <div class="section-title"><span class="badge badge--def">SKOS</span>Definition</div>
-                <div class="defblock defblock--def">A thing presented in support of the truthfulness of a claim.</div>
-
+              <div class="section-title"><span class="badge">SKOS</span>Definition</div>
+                <div class="defblock">A thing presented in support of the truthfulness of a claim.</div>
 
 
             <div class="kv">
@@ -264,9 +242,8 @@
       <section>
         <h2>Properties</h2>
           <div class="item" id="prop--comprisesClaims">
-            <h3>:comprisesClaims</h3>
+            <h3>comprisesClaims</h3>
             <div class="meta">IRI: <code>https://w3id.org/claimont#comprisesClaims</code></div>
-
 
 
 
@@ -280,9 +257,8 @@
             </div>
           </div>
           <div class="item" id="prop--hasObject">
-            <h3>:hasObject</h3>
+            <h3>hasObject</h3>
             <div class="meta">IRI: <code>https://w3id.org/claimont#hasObject</code></div>
-
 
 
 
@@ -296,9 +272,8 @@
             </div>
           </div>
           <div class="item" id="prop--hasPredicate">
-            <h3>:hasPredicate</h3>
+            <h3>hasPredicate</h3>
             <div class="meta">IRI: <code>https://w3id.org/claimont#hasPredicate</code></div>
-
 
 
 
@@ -312,9 +287,8 @@
             </div>
           </div>
           <div class="item" id="prop--hasSubject">
-            <h3>:hasSubject</h3>
+            <h3>hasSubject</h3>
             <div class="meta">IRI: <code>https://w3id.org/claimont#hasSubject</code></div>
-
 
 
 
@@ -328,9 +302,8 @@
             </div>
           </div>
           <div class="item" id="prop--isMadeBy">
-            <h3>is made by</h3>
+            <h3>isMadeBy</h3>
             <div class="meta">IRI: <code>https://w3id.org/claimont#isMadeBy</code></div>
-
 
 
 
@@ -344,12 +317,11 @@
             </div>
           </div>
           <div class="item" id="prop--isSupportedBy">
-            <h3>is supported by</h3>
+            <h3>isSupportedBy</h3>
             <div class="meta">IRI: <code>https://w3id.org/claimont#isSupportedBy</code></div>
 
-              <div class="section-title"><span class="badge badge--def">SKOS</span>Definition</div>
-                <div class="defblock defblock--def">Indicates that a claim is backed or reinforced by some form of substantiation or evidence.</div>
-
+              <div class="section-title"><span class="badge">SKOS</span>Definition</div>
+                <div class="defblock">Indicates that a claim is backed or reinforced by some form of substantiation or evidence.</div>
 
 
             <div class="kv">
@@ -368,9 +340,8 @@
             <h3>supports</h3>
             <div class="meta">IRI: <code>https://w3id.org/claimont#supports</code></div>
 
-              <div class="section-title"><span class="badge badge--def">SKOS</span>Definition</div>
-                <div class="defblock defblock--def">Indicates that a substantiation provides evidence or backing for a particular claim.</div>
-
+              <div class="section-title"><span class="badge">SKOS</span>Definition</div>
+                <div class="defblock">Indicates that a substantiation provides evidence or backing for a particular claim.</div>
 
 
             <div class="kv">

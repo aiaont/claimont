@@ -86,7 +86,7 @@
 	<!-- Properties -->
 
 	<owl:ObjectProperty rdf:ID="isMadeBy">
-		<rdfs:label>is made by</rdfs:label>
+		<rdfs:label>isMadeBy</rdfs:label>
 		<rdfs:domain rdf:resource="#Claim"/>
 		<rdfs:range rdf:resource="#Claimant"/>
 		<rdfs:domain rdf:resource="#Attestation"/>
@@ -94,6 +94,7 @@
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:ID="hasSubject">
+	<rdfs:label>hasSubject</rdfs:label>
 	<rdfs:domain rdf:resource="#Claim"/>
 	<rdfs:domain rdf:resource="#Attestation"/>
 	<rdfs:range rdf:resource="#Subject"/>
@@ -101,16 +102,19 @@
 </owl:ObjectProperty>	
 
 	<owl:ObjectProperty rdf:ID="hasPredicate">
+		<rdfs:label>hasPredicate</rdfs:label>
 		<rdfs:domain rdf:resource="#Claim"/>
 		<rdfs:range rdf:resource="#Predicate"/>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:ID="hasObject">
+		<rdfs:label>hasObject</rdfs:label>
 		<rdfs:domain rdf:resource="#Claim"/>
 		<rdfs:range rdf:resource="#Object"/>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:ID="comprisesClaims">
+		<rdfs:label>comprisesClaims</rdfs:label>
 		<rdfs:domain rdf:resource="#Claim"/>
 		<rdfs:range rdf:resource="#Claim"/>
 	</owl:ObjectProperty>	
@@ -118,7 +122,7 @@
 	<owl:ObjectProperty rdf:ID="isSupportedBy">
 		<rdfs:domain rdf:resource="#Claim"/>
 		<rdfs:range rdf:resource="#Substantiation"/>
-		 <rdfs:label>is supported by</rdfs:label>
+		 <rdfs:label>isSupportedBy</rdfs:label>
 		<skos:definition>Indicates that a claim is backed or reinforced by some form of substantiation or evidence.</skos:definition>
 		<owl:inverseOf rdf:resource="#supports"/>		
 	</owl:ObjectProperty>

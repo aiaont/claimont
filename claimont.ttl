@@ -21,25 +21,29 @@
     skos:definition "A claim made according to some specification." .
 
 :comprisesClaims a owl:ObjectProperty ;
+    rdfs:label "comprisesClaims" ;
     rdfs:domain :Claim ;
     rdfs:range :Claim .
 
 :hasObject a owl:ObjectProperty ;
+    rdfs:label "hasObject" ;
     rdfs:domain :Claim ;
     rdfs:range :Object .
 
 :hasPredicate a owl:ObjectProperty ;
+    rdfs:label "hasPredicate" ;
     rdfs:domain :Claim ;
     rdfs:range :Predicate .
 
 :hasSubject a owl:ObjectProperty ;
+    rdfs:label "hasSubject" ;
     rdfs:domain :Attestation,
         :Claim ;
     rdfs:range :Claim,
         :Subject .
 
 :isMadeBy a owl:ObjectProperty ;
-    rdfs:label "is made by" ;
+    rdfs:label "isMadeBy" ;
     rdfs:domain :Attestation,
         :Claim ;
     rdfs:range :Attester,
@@ -67,7 +71,7 @@
     skos:definition "The thing about which a statement (i.e., a claim or an attestation) is made." .
 
 :isSupportedBy a owl:ObjectProperty ;
-    rdfs:label "is supported by" ;
+    rdfs:label "isSupportedBy" ;
     rdfs:domain :Claim ;
     rdfs:range :Substantiation ;
     owl:inverseOf :supports ;
