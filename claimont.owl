@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns="https://w3id.org/claimont#"
-     xml:base="https://w3id.org/claimont"
+<rdf:RDF xmlns="http://w3id.org/claimont#"
+     xml:base="http://w3id.org/claimont"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
@@ -9,67 +9,89 @@
 	 xmlns:dcterms="http://purl.org/dc/terms/"
 	 xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
 
-	<owl:Ontology rdf:about="https://w3id.org/claimont">
+	<owl:Ontology rdf:about="http://w3id.org/claimont">
 		<dcterms:title xml:lang="en">Claim Ontology</dcterms:title>
 		<dcterms:description xml:lang="en">An ontology for describing claims and their substantiation.</dcterms:description>
 	</owl:Ontology>
 
 	<!-- Classes with Definitions -->
-	<owl:Class rdf:ID="Claim">
+	<owl:Class rdf:about="http://w3id.org/claimont#Claim">
 		<rdfs:label>Claim</rdfs:label>
 		<skos:definition>A defeasible statement about a thing.</skos:definition>
 		<rdfs:comment>A Claim may comprise other Claims.</rdfs:comment>	
 		<rdfs:subClassOf rdf:resource="http://docs.oasis-open.org/legalruleml/ns/v1.0/Statement"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="http://w3id.org/claimont#hasSubject"/>
+				<owl:allValuesFrom rdf:resource="http://w3id.org/claimont#Subject"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="http://w3id.org/claimont#isMadeBy"/>
+				<owl:allValuesFrom rdf:resource="http://w3id.org/claimont#Claimant"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>			
 	</owl:Class>	
 	
-	<owl:Class rdf:ID="Claimant">
+	<owl:Class rdf:about="http://w3id.org/claimont#Claimant">
 		<rdfs:label>Claimant</rdfs:label>
 		<skos:definition>An entity (e.g., a person, an organisation or a system) that makes a claim.</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:ID="Subject">
+	<owl:Class rdf:about="http://w3id.org/claimont#Subject">
 		<rdfs:label>Subject</rdfs:label>
 		<skos:definition>The thing about which a statement (i.e., a claim or an attestation) is made.</skos:definition>
 		<owl:equivalentClass rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
 	</owl:Class>
 	
-	<owl:Class rdf:ID="Predicate">
+	<owl:Class rdf:about="http://w3id.org/claimont#Predicate">
 		<rdfs:label>Predicate</rdfs:label>
 		<skos:definition>The characteristic, attribute, or relationship asserted about the subject of a claim or an attestation.</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:ID="Object">
+	<owl:Class rdf:about="http://w3id.org/claimont#Object">
 		<rdfs:label>Object</rdfs:label>
 		<skos:definition>The target or value associated with the predicate of a claim or an attestation.</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:ID="Substantiation">
+	<owl:Class rdf:about="http://w3id.org/claimont#Substantiation">
 		<rdfs:label>Substantiation</rdfs:label>
 		<skos:definition>A thing presented in support of the truthfulness of a claim.</skos:definition>
 	</owl:Class>
 
-	<owl:Class rdf:ID="IdentityClaim">
+	<owl:Class rdf:about="http://w3id.org/claimont#IdentityClaim">
 		<rdfs:subClassOf rdf:resource="#Claim"/>
 		<rdfs:label>Identity Claim</rdfs:label>
 		<skos:definition>A statement made by a claimant about their identity, usually with reference to some identification system.</skos:definition>
 	</owl:Class>
 
-	<owl:Class rdf:ID="Attestation">
+	<owl:Class rdf:about="http://w3id.org/claimont#Attestation">
 		<rdfs:subClassOf rdf:resource="#Substantiation"/>
 		<rdfs:subClassOf rdf:resource="http://docs.oasis-open.org/legalruleml/ns/v1.0/Statement"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="http://w3id.org/claimont#hasSubject"/>
+				<owl:allValuesFrom rdf:resource="http://w3id.org/claimont#Claim"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>		
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="http://w3id.org/claimont#isMadeBy"/>
+				<owl:allValuesFrom rdf:resource="http://w3id.org/claimont#Attester"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>		
 		<rdfs:label>Attestation</rdfs:label>
 		<skos:definition>An indefeasible statement, usually formal, made by an entity according to which they have witnessed or been presented with sufficient evidence to consider a specific claim made by another entity as truthful or accurate.</skos:definition>
 		<rdfs:comment>A verifier's statement is an example of an attestation.</rdfs:comment>
 	</owl:Class>
 	
-	<owl:Class rdf:ID="Attester">
+	<owl:Class rdf:about="http://w3id.org/claimont#Attester">
 		<rdfs:label>Attester</rdfs:label>
-
 		<skos:definition>An entity (e.g., a person, an organisation or a system) that makes an attestation.</skos:definition>
-
 	</owl:Class>
 	
-	<owl:Class rdf:ID="Report">
+	<owl:Class rdf:about="http://w3id.org/claimont#Report">
 		<rdfs:subClassOf rdf:resource="#Claim"/>
 		<rdfs:label>Report</rdfs:label>
 		<skos:definition>A claim made according to some specification.</skos:definition>
@@ -85,41 +107,35 @@
 
 	<!-- Properties -->
 
-	<owl:ObjectProperty rdf:ID="isMadeBy">
+	<owl:ObjectProperty rdf:about="http://w3id.org/claimont#isMadeBy">
 		<rdfs:label>isMadeBy</rdfs:label>
-		<rdfs:domain rdf:resource="#Claim"/>
-		<rdfs:range rdf:resource="#Claimant"/>
-		<rdfs:domain rdf:resource="#Attestation"/>
-		<rdfs:range rdf:resource="#Attester"/>
+		<rdfs:comment>This property is used on the Claim and Attestation classes. For a Claim the value assigned to this property must be a Claimant; for an Attestation the value must be an Attester. This is enforced by owl:Restriction (see the definitions of the Claim and Attestation classes.)</rdfs:comment>
 	</owl:ObjectProperty>
 	
-	<owl:ObjectProperty rdf:ID="hasSubject">
-	<rdfs:label>hasSubject</rdfs:label>
-	<rdfs:domain rdf:resource="#Claim"/>
-	<rdfs:domain rdf:resource="#Attestation"/>
-	<rdfs:range rdf:resource="#Subject"/>
-	<rdfs:range rdf:resource="#Claim"/>
-</owl:ObjectProperty>	
+	<owl:ObjectProperty rdf:about="http://w3id.org/claimont#hasSubject">
+		<rdfs:label>hasSubject</rdfs:label>
+		<rdfs:comment>This property is used on the Claim and Attestation classes. For a Claim the value assigned to this property must be a Subject; for an Attestation the value must be a Claim. This is enforced by owl:Restriction (see the definitions of the Claim and Attestation classes.)</rdfs:comment>
+	</owl:ObjectProperty>	
 
-	<owl:ObjectProperty rdf:ID="hasPredicate">
+	<owl:ObjectProperty rdf:about="http://w3id.org/claimont#hasPredicate">
 		<rdfs:label>hasPredicate</rdfs:label>
 		<rdfs:domain rdf:resource="#Claim"/>
 		<rdfs:range rdf:resource="#Predicate"/>
 	</owl:ObjectProperty>
 	
-	<owl:ObjectProperty rdf:ID="hasObject">
+	<owl:ObjectProperty rdf:about="http://w3id.org/claimont#hasObject">
 		<rdfs:label>hasObject</rdfs:label>
 		<rdfs:domain rdf:resource="#Claim"/>
 		<rdfs:range rdf:resource="#Object"/>
 	</owl:ObjectProperty>
 	
-	<owl:ObjectProperty rdf:ID="comprisesClaims">
+	<owl:ObjectProperty rdf:about="http://w3id.org/claimont#comprisesClaims">
 		<rdfs:label>comprisesClaims</rdfs:label>
 		<rdfs:domain rdf:resource="#Claim"/>
 		<rdfs:range rdf:resource="#Claim"/>
 	</owl:ObjectProperty>	
 	
-	<owl:ObjectProperty rdf:ID="isSupportedBy">
+	<owl:ObjectProperty rdf:about="http://w3id.org/claimont#isSupportedBy">
 		<rdfs:domain rdf:resource="#Claim"/>
 		<rdfs:range rdf:resource="#Substantiation"/>
 		 <rdfs:label>isSupportedBy</rdfs:label>
@@ -127,13 +143,13 @@
 		<owl:inverseOf rdf:resource="#supports"/>		
 	</owl:ObjectProperty>
 
-	<owl:ObjectProperty rdf:ID="supports">
-    <rdfs:domain rdf:resource="#Substantiation"/>
-    <rdfs:range rdf:resource="#Claim"/>
-	<rdfs:label>supports</rdfs:label>
-    <skos:definition>Indicates that a substantiation provides evidence or backing for a particular claim.</skos:definition> 
-    <owl:inverseOf rdf:resource="#isSupportedBy"/>
-</owl:ObjectProperty>	
+	<owl:ObjectProperty rdf:about="http://w3id.org/claimont#supports">
+		<rdfs:domain rdf:resource="#Substantiation"/>
+		<rdfs:range rdf:resource="#Claim"/>
+		<rdfs:label>supports</rdfs:label>
+		<skos:definition>Indicates that a substantiation provides evidence or backing for a particular claim.</skos:definition> 
+		<owl:inverseOf rdf:resource="#isSupportedBy"/>
+	</owl:ObjectProperty>	
 
 </rdf:RDF>
 
