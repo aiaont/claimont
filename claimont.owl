@@ -64,9 +64,7 @@
 	
 	<owl:Class rdf:about="http://w3id.org/claimont#Attester">
 		<rdfs:label>Attester</rdfs:label>
-
 		<skos:definition>An entity (e.g., a person, an organisation or a system) that makes an attestation.</skos:definition>
-
 	</owl:Class>
 	
 	<owl:Class rdf:about="http://w3id.org/claimont#Report">
@@ -94,12 +92,12 @@
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="http://w3id.org/claimont#hasSubject">
-	<rdfs:label>hasSubject</rdfs:label>
-	<rdfs:domain rdf:resource="#Claim"/>
-	<rdfs:domain rdf:resource="#Attestation"/>
-	<rdfs:range rdf:resource="#Subject"/>
-	<rdfs:range rdf:resource="#Claim"/>
-</owl:ObjectProperty>	
+		<rdfs:label>hasSubject</rdfs:label>
+		<rdfs:domain rdf:resource="#Claim"/>
+		<rdfs:domain rdf:resource="#Attestation"/>
+		<rdfs:range rdf:resource="#Subject"/>
+		<rdfs:range rdf:resource="#Claim"/>
+	</owl:ObjectProperty>	
 
 	<owl:ObjectProperty rdf:about="http://w3id.org/claimont#hasPredicate">
 		<rdfs:label>hasPredicate</rdfs:label>
@@ -128,12 +126,12 @@
 	</owl:ObjectProperty>
 
 	<owl:ObjectProperty rdf:about="http://w3id.org/claimont#supports">
-    <rdfs:domain rdf:resource="#Substantiation"/>
-    <rdfs:range rdf:resource="#Claim"/>
-	<rdfs:label>supports</rdfs:label>
-    <skos:definition>Indicates that a substantiation provides evidence or backing for a particular claim.</skos:definition> 
-    <owl:inverseOf rdf:resource="#isSupportedBy"/>
-</owl:ObjectProperty>	
+		<rdfs:domain rdf:resource="#Substantiation"/>
+		<rdfs:range rdf:resource="#Claim"/>
+		<rdfs:label>supports</rdfs:label>
+		<skos:definition>Indicates that a substantiation provides evidence or backing for a particular claim.</skos:definition> 
+		<owl:inverseOf rdf:resource="#isSupportedBy"/>
+	</owl:ObjectProperty>	
 
 </rdf:RDF>
 
