@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns="https://w3id.org/claimont#"
-     xml:base="https://w3id.org/claimont"
+<rdf:RDF xmlns="http://w3id.org/claimont#"
+     xml:base="http://w3id.org/claimont"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
@@ -9,7 +9,7 @@
 	 xmlns:dcterms="http://purl.org/dc/terms/"
 	 xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
 
-	<owl:Ontology rdf:about="https://w3id.org/claimont">
+	<owl:Ontology rdf:about="http://w3id.org/claimont">
 		<dcterms:title xml:lang="en">Claim Ontology</dcterms:title>
 		<dcterms:description xml:lang="en">An ontology for describing claims and their substantiation.</dcterms:description>
 	</owl:Ontology>
