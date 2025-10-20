@@ -46,13 +46,13 @@
   <div class="wrap">
     <header>
       <h1>Claim Ontology</h1>
-<div class="iri">IRI: <code>https://w3id.org/claimont</code></div>      <div class="desc defblock"><span class="badge">Description</span> An ontology for describing claims and their substantiation.</div>
+<div class="iri">IRI: <code>http://w3id.org/claimont</code></div>      <div class="desc defblock"><span class="badge">Description</span> An ontology for describing claims and their substantiation.</div>
       <div class="prefixes">
         Prefixes:
-          <code>:: &lt;https://w3id.org/claimont#&gt;</code><br />
+          <code>:: &lt;http://w3id.org/claimont#&gt;</code><br />
           <code>dcterms: &lt;http://purl.org/dc/terms/&gt;</code><br />
           <code>lrml: &lt;http://docs.oasis-open.org/legalruleml/ns/v1.0/&gt;</code><br />
-          <code>ns1: &lt;https://w3id.org/&gt;</code><br />
+          <code>ns1: &lt;http://w3id.org/&gt;</code><br />
           <code>owl: &lt;http://www.w3.org/2002/07/owl#&gt;</code><br />
           <code>rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;</code><br />
           <code>rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code><br />
@@ -77,7 +77,7 @@
         <h2>Classes</h2>
           <div class="item" id="cls--Attestation">
             <h3>Attestation</h3>
-            <div class="meta">IRI: <code>https://w3id.org/claimont#Attestation</code></div>
+            <div class="meta">IRI: <code>http://w3id.org/claimont#Attestation</code></div>
 
               <div class="section-title"><span class="badge">SKOS</span>Definition</div>
                 <div class="defblock">An indefeasible statement, usually formal, made by an entity according to which they have witnessed or been presented with sufficient evidence to consider a specific claim made by another entity as truthful or accurate.</div>
@@ -89,28 +89,22 @@
                 <div class="key">SubClass Of</div>
                 <div>
                     <a href="#cls--Substantiation">:Substantiation</a>,                     <a href="http://docs.oasis-open.org/legalruleml/ns/v1.0/Statement">lrml:Statement</a>                </div>
-                <div class="key">In Domain Of</div>
-                <div>
-                    <a href="#prop--isMadeBy">:isMadeBy</a>,                     <a href="#prop--hasSubject">:hasSubject</a>                </div>
             </div>
           </div>
           <div class="item" id="cls--Attester">
             <h3>Attester</h3>
-            <div class="meta">IRI: <code>https://w3id.org/claimont#Attester</code></div>
+            <div class="meta">IRI: <code>http://w3id.org/claimont#Attester</code></div>
 
               <div class="section-title"><span class="badge">SKOS</span>Definition</div>
                 <div class="defblock">An entity (e.g., a person, an organisation or a system) that makes an attestation.</div>
 
 
             <div class="kv">
-                <div class="key">In Range Of</div>
-                <div>
-                    <a href="#prop--isMadeBy">:isMadeBy</a>                </div>
             </div>
           </div>
           <div class="item" id="cls--Claim">
             <h3>Claim</h3>
-            <div class="meta">IRI: <code>https://w3id.org/claimont#Claim</code></div>
+            <div class="meta">IRI: <code>http://w3id.org/claimont#Claim</code></div>
 
               <div class="section-title"><span class="badge">SKOS</span>Definition</div>
                 <div class="defblock">A defeasible statement about a thing.</div>
@@ -127,29 +121,26 @@
                     <a href="#cls--IdentityClaim">:IdentityClaim</a>,                     <a href="#cls--Report">:Report</a>                </div>
                 <div class="key">In Domain Of</div>
                 <div>
-                    <a href="#prop--isMadeBy">:isMadeBy</a>,                     <a href="#prop--hasSubject">:hasSubject</a>,                     <a href="#prop--hasPredicate">:hasPredicate</a>,                     <a href="#prop--hasObject">:hasObject</a>,                     <a href="#prop--comprisesClaims">:comprisesClaims</a>,                     <a href="#prop--isSupportedBy">:isSupportedBy</a>                </div>
+                    <a href="#prop--hasPredicate">:hasPredicate</a>,                     <a href="#prop--hasObject">:hasObject</a>,                     <a href="#prop--comprisesClaims">:comprisesClaims</a>,                     <a href="#prop--isSupportedBy">:isSupportedBy</a>                </div>
                 <div class="key">In Range Of</div>
                 <div>
-                    <a href="#prop--hasSubject">:hasSubject</a>,                     <a href="#prop--comprisesClaims">:comprisesClaims</a>,                     <a href="#prop--supports">:supports</a>                </div>
+                    <a href="#prop--comprisesClaims">:comprisesClaims</a>,                     <a href="#prop--supports">:supports</a>                </div>
             </div>
           </div>
           <div class="item" id="cls--Claimant">
             <h3>Claimant</h3>
-            <div class="meta">IRI: <code>https://w3id.org/claimont#Claimant</code></div>
+            <div class="meta">IRI: <code>http://w3id.org/claimont#Claimant</code></div>
 
               <div class="section-title"><span class="badge">SKOS</span>Definition</div>
                 <div class="defblock">An entity (e.g., a person, an organisation or a system) that makes a claim.</div>
 
 
             <div class="kv">
-                <div class="key">In Range Of</div>
-                <div>
-                    <a href="#prop--isMadeBy">:isMadeBy</a>                </div>
             </div>
           </div>
           <div class="item" id="cls--IdentityClaim">
             <h3>Identity Claim</h3>
-            <div class="meta">IRI: <code>https://w3id.org/claimont#IdentityClaim</code></div>
+            <div class="meta">IRI: <code>http://w3id.org/claimont#IdentityClaim</code></div>
 
               <div class="section-title"><span class="badge">SKOS</span>Definition</div>
                 <div class="defblock">A statement made by a claimant about their identity, usually with reference to some identification system.</div>
@@ -163,7 +154,7 @@
           </div>
           <div class="item" id="cls--Object">
             <h3>Object</h3>
-            <div class="meta">IRI: <code>https://w3id.org/claimont#Object</code></div>
+            <div class="meta">IRI: <code>http://w3id.org/claimont#Object</code></div>
 
               <div class="section-title"><span class="badge">SKOS</span>Definition</div>
                 <div class="defblock">The target or value associated with the predicate of a claim or an attestation.</div>
@@ -177,7 +168,7 @@
           </div>
           <div class="item" id="cls--Predicate">
             <h3>Predicate</h3>
-            <div class="meta">IRI: <code>https://w3id.org/claimont#Predicate</code></div>
+            <div class="meta">IRI: <code>http://w3id.org/claimont#Predicate</code></div>
 
               <div class="section-title"><span class="badge">SKOS</span>Definition</div>
                 <div class="defblock">The characteristic, attribute, or relationship asserted about the subject of a claim or an attestation.</div>
@@ -191,7 +182,7 @@
           </div>
           <div class="item" id="cls--Report">
             <h3>Report</h3>
-            <div class="meta">IRI: <code>https://w3id.org/claimont#Report</code></div>
+            <div class="meta">IRI: <code>http://w3id.org/claimont#Report</code></div>
 
               <div class="section-title"><span class="badge">SKOS</span>Definition</div>
                 <div class="defblock">A claim made according to some specification.</div>
@@ -205,21 +196,18 @@
           </div>
           <div class="item" id="cls--Subject">
             <h3>Subject</h3>
-            <div class="meta">IRI: <code>https://w3id.org/claimont#Subject</code></div>
+            <div class="meta">IRI: <code>http://w3id.org/claimont#Subject</code></div>
 
               <div class="section-title"><span class="badge">SKOS</span>Definition</div>
                 <div class="defblock">The thing about which a statement (i.e., a claim or an attestation) is made.</div>
 
 
             <div class="kv">
-                <div class="key">In Range Of</div>
-                <div>
-                    <a href="#prop--hasSubject">:hasSubject</a>                </div>
             </div>
           </div>
           <div class="item" id="cls--Substantiation">
             <h3>Substantiation</h3>
-            <div class="meta">IRI: <code>https://w3id.org/claimont#Substantiation</code></div>
+            <div class="meta">IRI: <code>http://w3id.org/claimont#Substantiation</code></div>
 
               <div class="section-title"><span class="badge">SKOS</span>Definition</div>
                 <div class="defblock">A thing presented in support of the truthfulness of a claim.</div>
@@ -243,7 +231,7 @@
         <h2>Properties</h2>
           <div class="item" id="prop--comprisesClaims">
             <h3>comprisesClaims</h3>
-            <div class="meta">IRI: <code>https://w3id.org/claimont#comprisesClaims</code></div>
+            <div class="meta">IRI: <code>http://w3id.org/claimont#comprisesClaims</code></div>
 
 
 
@@ -258,7 +246,7 @@
           </div>
           <div class="item" id="prop--hasObject">
             <h3>hasObject</h3>
-            <div class="meta">IRI: <code>https://w3id.org/claimont#hasObject</code></div>
+            <div class="meta">IRI: <code>http://w3id.org/claimont#hasObject</code></div>
 
 
 
@@ -273,7 +261,7 @@
           </div>
           <div class="item" id="prop--hasPredicate">
             <h3>hasPredicate</h3>
-            <div class="meta">IRI: <code>https://w3id.org/claimont#hasPredicate</code></div>
+            <div class="meta">IRI: <code>http://w3id.org/claimont#hasPredicate</code></div>
 
 
 
@@ -288,37 +276,29 @@
           </div>
           <div class="item" id="prop--hasSubject">
             <h3>hasSubject</h3>
-            <div class="meta">IRI: <code>https://w3id.org/claimont#hasSubject</code></div>
+            <div class="meta">IRI: <code>http://w3id.org/claimont#hasSubject</code></div>
 
 
+              <div class="section-title">Comments</div>
+                <div class="comment">This property is used on the Claim and Attestation classes. For a Claim the value assigned to this property must be a Subject; for an Attestation the value must be a Claim. This is enforced by owl:Restriction (see the definitions of the Claim and Attestation classes.)</div>
 
             <div class="kv">
-                <div class="key">Domain</div>
-                <div>
-                    <a href="#cls--Claim">:Claim</a>,                     <a href="#cls--Attestation">:Attestation</a>                </div>
-                <div class="key">Range</div>
-                <div>
-                    <a href="#cls--Subject">:Subject</a>,                     <a href="#cls--Claim">:Claim</a>                </div>
             </div>
           </div>
           <div class="item" id="prop--isMadeBy">
             <h3>isMadeBy</h3>
-            <div class="meta">IRI: <code>https://w3id.org/claimont#isMadeBy</code></div>
+            <div class="meta">IRI: <code>http://w3id.org/claimont#isMadeBy</code></div>
 
 
+              <div class="section-title">Comments</div>
+                <div class="comment">This property is used on the Claim and Attestation classes. For a Claim the value assigned to this property must be a Claimant; for an Attestation the value must be an Attester. This is enforced by owl:Restriction (see the definitions of the Claim and Attestation classes.)</div>
 
             <div class="kv">
-                <div class="key">Domain</div>
-                <div>
-                    <a href="#cls--Claim">:Claim</a>,                     <a href="#cls--Attestation">:Attestation</a>                </div>
-                <div class="key">Range</div>
-                <div>
-                    <a href="#cls--Claimant">:Claimant</a>,                     <a href="#cls--Attester">:Attester</a>                </div>
             </div>
           </div>
           <div class="item" id="prop--isSupportedBy">
             <h3>isSupportedBy</h3>
-            <div class="meta">IRI: <code>https://w3id.org/claimont#isSupportedBy</code></div>
+            <div class="meta">IRI: <code>http://w3id.org/claimont#isSupportedBy</code></div>
 
               <div class="section-title"><span class="badge">SKOS</span>Definition</div>
                 <div class="defblock">Indicates that a claim is backed or reinforced by some form of substantiation or evidence.</div>
@@ -338,7 +318,7 @@
           </div>
           <div class="item" id="prop--supports">
             <h3>supports</h3>
-            <div class="meta">IRI: <code>https://w3id.org/claimont#supports</code></div>
+            <div class="meta">IRI: <code>http://w3id.org/claimont#supports</code></div>
 
               <div class="section-title"><span class="badge">SKOS</span>Definition</div>
                 <div class="defblock">Indicates that a substantiation provides evidence or backing for a particular claim.</div>

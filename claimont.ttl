@@ -1,4 +1,4 @@
-@prefix : <https://w3id.org/claimont#> .
+@prefix : <http://w3id.org/claimont#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix lrml: <http://docs.oasis-open.org/legalruleml/ns/v1.0/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -6,9 +6,22 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
-<https://w3id.org/claimont> a owl:Ontology ;
+<http://w3id.org/claimont> a owl:Ontology ;
     dcterms:description "An ontology for describing claims and their substantiation."@en ;
     dcterms:title "Claim Ontology"@en .
+
+:Attestation a owl:Class ;
+    rdfs:label "Attestation" ;
+    rdfs:comment "A verifier's statement is an example of an attestation." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom :Attester ;
+            owl:onProperty :isMadeBy ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom :Claim ;
+            owl:onProperty :hasSubject ],
+        lrml:Statement,
+        :Substantiation ;
+    skos:definition "An indefeasible statement, usually formal, made by an entity according to which they have witnessed or been presented with sufficient evidence to consider a specific claim made by another entity as truthful or accurate." .
 
 :IdentityClaim a owl:Class ;
     rdfs:label "Identity Claim" ;
@@ -34,20 +47,6 @@
     rdfs:label "hasPredicate" ;
     rdfs:domain :Claim ;
     rdfs:range :Predicate .
-
-:hasSubject a owl:ObjectProperty ;
-    rdfs:label "hasSubject" ;
-    rdfs:domain :Attestation,
-        :Claim ;
-    rdfs:range :Claim,
-        :Subject .
-
-:isMadeBy a owl:ObjectProperty ;
-    rdfs:label "isMadeBy" ;
-    rdfs:domain :Attestation,
-        :Claim ;
-    rdfs:range :Attester,
-        :Claimant .
 
 :Attester a owl:Class ;
     rdfs:label "Attester" ;
@@ -84,12 +83,13 @@
     owl:inverseOf :isSupportedBy ;
     skos:definition "Indicates that a substantiation provides evidence or backing for a particular claim." .
 
-:Attestation a owl:Class ;
-    rdfs:label "Attestation" ;
-    rdfs:comment "A verifier's statement is an example of an attestation." ;
-    rdfs:subClassOf lrml:Statement,
-        :Substantiation ;
-    skos:definition "An indefeasible statement, usually formal, made by an entity according to which they have witnessed or been presented with sufficient evidence to consider a specific claim made by another entity as truthful or accurate." .
+:hasSubject a owl:ObjectProperty ;
+    rdfs:label "hasSubject" ;
+    rdfs:comment "This property is used on the Claim and Attestation classes. For a Claim the value assigned to this property must be a Subject; for an Attestation the value must be a Claim. This is enforced by owl:Restriction (see the definitions of the Claim and Attestation classes.)" .
+
+:isMadeBy a owl:ObjectProperty ;
+    rdfs:label "isMadeBy" ;
+    rdfs:comment "This property is used on the Claim and Attestation classes. For a Claim the value assigned to this property must be a Claimant; for an Attestation the value must be an Attester. This is enforced by owl:Restriction (see the definitions of the Claim and Attestation classes.)" .
 
 :Substantiation a owl:Class ;
     rdfs:label "Substantiation" ;
@@ -98,7 +98,13 @@
 :Claim a owl:Class ;
     rdfs:label "Claim" ;
     rdfs:comment "A Claim may comprise other Claims." ;
-    rdfs:subClassOf lrml:Statement ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom :Claimant ;
+            owl:onProperty :isMadeBy ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom :Subject ;
+            owl:onProperty :hasSubject ],
+        lrml:Statement ;
     skos:definition "A defeasible statement about a thing." .
 
 [] a owl:AllDisjointClasses ;
