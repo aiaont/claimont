@@ -20,6 +20,18 @@
 		<skos:definition>A defeasible statement about a thing.</skos:definition>
 		<rdfs:comment>A Claim may comprise other Claims.</rdfs:comment>	
 		<rdfs:subClassOf rdf:resource="http://docs.oasis-open.org/legalruleml/ns/v1.0/Statement"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="http://w3id.org/claimont#hasSubject"/>
+				<owl:allValuesFrom rdf:resource="http://w3id.org/claimont#Subject"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="http://w3id.org/claimont#isMadeBy"/>
+				<owl:allValuesFrom rdf:resource="http://w3id.org/claimont#Claimant"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>			
 	</owl:Class>	
 	
 	<owl:Class rdf:about="http://w3id.org/claimont#Claimant">
@@ -57,6 +69,18 @@
 	<owl:Class rdf:about="http://w3id.org/claimont#Attestation">
 		<rdfs:subClassOf rdf:resource="#Substantiation"/>
 		<rdfs:subClassOf rdf:resource="http://docs.oasis-open.org/legalruleml/ns/v1.0/Statement"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="http://w3id.org/claimont#hasSubject"/>
+				<owl:allValuesFrom rdf:resource="http://w3id.org/claimont#Claim"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>		
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="http://w3id.org/claimont#isMadeBy"/>
+				<owl:allValuesFrom rdf:resource="http://w3id.org/claimont#Attester"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>		
 		<rdfs:label>Attestation</rdfs:label>
 		<skos:definition>An indefeasible statement, usually formal, made by an entity according to which they have witnessed or been presented with sufficient evidence to consider a specific claim made by another entity as truthful or accurate.</skos:definition>
 		<rdfs:comment>A verifier's statement is an example of an attestation.</rdfs:comment>
@@ -85,18 +109,12 @@
 
 	<owl:ObjectProperty rdf:about="http://w3id.org/claimont#isMadeBy">
 		<rdfs:label>isMadeBy</rdfs:label>
-		<rdfs:domain rdf:resource="#Claim"/>
-		<rdfs:range rdf:resource="#Claimant"/>
-		<rdfs:domain rdf:resource="#Attestation"/>
-		<rdfs:range rdf:resource="#Attester"/>
+		<rdfs:comment>This property is used on the Claim and Attestation classes. For a Claim the value assigned to this property must be a Claimant; for an Attestation the value must be an Attester. This is enforced by owl:Restriction (see the definitions of the Claim and Attestation classes.)</rdfs:comment>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="http://w3id.org/claimont#hasSubject">
 		<rdfs:label>hasSubject</rdfs:label>
-		<rdfs:domain rdf:resource="#Claim"/>
-		<rdfs:domain rdf:resource="#Attestation"/>
-		<rdfs:range rdf:resource="#Subject"/>
-		<rdfs:range rdf:resource="#Claim"/>
+		<rdfs:comment>This property is used on the Claim and Attestation classes. For a Claim the value assigned to this property must be a Subject; for an Attestation the value must be a Claim. This is enforced by owl:Restriction (see the definitions of the Claim and Attestation classes.)</rdfs:comment>
 	</owl:ObjectProperty>	
 
 	<owl:ObjectProperty rdf:about="http://w3id.org/claimont#hasPredicate">
