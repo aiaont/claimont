@@ -5,10 +5,66 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://w3id.org/claimont> a owl:Ontology ;
     dcterms:description "An ontology for describing claims and their substantiation."@en ;
     dcterms:title "Claim Ontology"@en .
+
+:IdentityClaim a owl:Class ;
+    rdfs:label "Identity Claim" ;
+    rdfs:subClassOf :Claim ;
+    skos:definition "A statement made by a claimant about their identity, usually with reference to some identification system." .
+
+:Object a owl:Class ;
+    rdfs:label "Object" ;
+    rdfs:comment "Deprecated. Use owl:Thing instead." ;
+    owl:deprecated true ;
+    skos:definition "The target or value associated with the predicate of a claim or an attestation." .
+
+:Predicate a owl:Class ;
+    rdfs:label "Predicate" ;
+    rdfs:comment "Deprecated. Use owl:Thing instead." ;
+    owl:deprecated true ;
+    skos:definition "The characteristic, attribute, or relationship asserted about the subject of a claim or an attestation." .
+
+:Report a owl:Class ;
+    rdfs:label "Report" ;
+    rdfs:subClassOf :Claim ;
+    skos:definition "A claim made according to some specification." .
+
+:Subject a owl:Class ;
+    rdfs:label "Subject" ;
+    rdfs:comment "Deprecated. Use owl:Thing instead." ;
+    owl:deprecated true ;
+    owl:equivalentClass owl:Thing ;
+    skos:definition "The thing about which a statement (i.e., a claim or an attestation) is made." .
+
+:comprisesClaims a owl:ObjectProperty ;
+    rdfs:label "comprisesClaims" ;
+    rdfs:domain :Claim ;
+    rdfs:range :Claim .
+
+:hasObject a owl:ObjectProperty ;
+    rdfs:label "hasObject" ;
+    rdfs:domain :Claim ;
+    rdfs:range owl:Thing .
+
+:hasPropertyPredicate a owl:ObjectProperty ;
+    rdfs:label "hasPropertyPredicate"@en ;
+    rdfs:comment """
+			Relates a claim or attestation to the RDF, RDFS, OWL object property, or OWL data property that represents the predicate of the claim.
+		"""@en ;
+    rdfs:range rdf:Property ;
+    rdfs:subPropertyOf :hasPredicate .
+
+:hasTextPredicate a owl:DatatypeProperty ;
+    rdfs:label "hasTextPredicate"@en ;
+    rdfs:comment """
+			Relates a claim or attestation to its predicate through a simple text string.
+		"""@en ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf :hasPredicate .
 
 :Attestation a owl:Class ;
     rdfs:label "Attestation" ;
@@ -23,31 +79,6 @@
         :Substantiation ;
     skos:definition "An indefeasible statement, usually formal, made by an entity according to which they have witnessed or been presented with sufficient evidence to consider a specific claim made by another entity as truthful or accurate." .
 
-:IdentityClaim a owl:Class ;
-    rdfs:label "Identity Claim" ;
-    rdfs:subClassOf :Claim ;
-    skos:definition "A statement made by a claimant about their identity, usually with reference to some identification system." .
-
-:Report a owl:Class ;
-    rdfs:label "Report" ;
-    rdfs:subClassOf :Claim ;
-    skos:definition "A claim made according to some specification." .
-
-:comprisesClaims a owl:ObjectProperty ;
-    rdfs:label "comprisesClaims" ;
-    rdfs:domain :Claim ;
-    rdfs:range :Claim .
-
-:hasObject a owl:ObjectProperty ;
-    rdfs:label "hasObject" ;
-    rdfs:domain :Claim ;
-    rdfs:range :Object .
-
-:hasPredicate a owl:ObjectProperty ;
-    rdfs:label "hasPredicate" ;
-    rdfs:domain :Claim ;
-    rdfs:range :Predicate .
-
 :Attester a owl:Class ;
     rdfs:label "Attester" ;
     skos:definition "An entity (e.g., a person, an organisation or a system) that makes an attestation." .
@@ -55,19 +86,6 @@
 :Claimant a owl:Class ;
     rdfs:label "Claimant" ;
     skos:definition "An entity (e.g., a person, an organisation or a system) that makes a claim." .
-
-:Object a owl:Class ;
-    rdfs:label "Object" ;
-    skos:definition "The target or value associated with the predicate of a claim or an attestation." .
-
-:Predicate a owl:Class ;
-    rdfs:label "Predicate" ;
-    skos:definition "The characteristic, attribute, or relationship asserted about the subject of a claim or an attestation." .
-
-:Subject a owl:Class ;
-    rdfs:label "Subject" ;
-    owl:equivalentClass owl:Thing ;
-    skos:definition "The thing about which a statement (i.e., a claim or an attestation) is made." .
 
 :isSupportedBy a owl:ObjectProperty ;
     rdfs:label "isSupportedBy" ;
@@ -82,6 +100,13 @@
     rdfs:range :Claim ;
     owl:inverseOf :isSupportedBy ;
     skos:definition "Indicates that a substantiation provides evidence or backing for a particular claim." .
+
+:hasPredicate a rdf:Property ;
+    rdfs:label "hasPredicate"@en ;
+    rdfs:comment "Do not use this property directly - use its 'hasTextPredicate' or 'hasPropertyPredicate' subproperties instead."@en,
+        "Generic property that relates a claim or attestation to its predicate."@en ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( :Claim :Attestation ) ] .
 
 :hasSubject a owl:ObjectProperty ;
     rdfs:label "hasSubject" ;
@@ -102,7 +127,7 @@
             owl:allValuesFrom :Claimant ;
             owl:onProperty :isMadeBy ],
         [ a owl:Restriction ;
-            owl:allValuesFrom :Subject ;
+            owl:allValuesFrom owl:Thing ;
             owl:onProperty :hasSubject ],
         lrml:Statement ;
     skos:definition "A defeasible statement about a thing." .
