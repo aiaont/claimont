@@ -57,6 +57,7 @@
           <code>rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;</code><br />
           <code>rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code><br />
           <code>skos: &lt;http://www.w3.org/2004/02/skos/core#&gt;</code><br />
+          <code>xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;</code><br />
       </div>
     </header>
 
@@ -65,16 +66,25 @@
       <div class="kv">
           <div class="key">Classes</div>
           <div>
-              <a href="#cls--Attestation">Attestation</a>,               <a href="#cls--Attester">Attester</a>,               <a href="#cls--Claim">Claim</a>,               <a href="#cls--Claimant">Claimant</a>,               <a href="#cls--IdentityClaim">Identity Claim</a>,               <a href="#cls--Object">Object</a>,               <a href="#cls--Predicate">Predicate</a>,               <a href="#cls--Report">Report</a>,               <a href="#cls--Subject">Subject</a>,               <a href="#cls--Substantiation">Substantiation</a>          </div>
+              <a href="#cls-<N63bfdf57e9be4bfd98a5893aedc244cf>"><N63bfdf57e9be4bfd98a5893aedc244cf></a>,               <a href="#cls--Attestation">Attestation</a>,               <a href="#cls--Attester">Attester</a>,               <a href="#cls--Claim">Claim</a>,               <a href="#cls--Claimant">Claimant</a>,               <a href="#cls--IdentityClaim">Identity Claim</a>,               <a href="#cls--Object">Object</a>,               <a href="#cls--Predicate">Predicate</a>,               <a href="#cls--Report">Report</a>,               <a href="#cls--Subject">Subject</a>,               <a href="#cls--Substantiation">Substantiation</a>          </div>
           <div class="key">Properties</div>
           <div>
-              <a href="#prop--comprisesClaims">comprisesClaims</a>,               <a href="#prop--hasObject">hasObject</a>,               <a href="#prop--hasPredicate">hasPredicate</a>,               <a href="#prop--hasSubject">hasSubject</a>,               <a href="#prop--isMadeBy">isMadeBy</a>,               <a href="#prop--isSupportedBy">isSupportedBy</a>,               <a href="#prop--supports">supports</a>          </div>
+              <a href="#prop--comprisesClaims">comprisesClaims</a>,               <a href="#prop--hasObject">hasObject</a>,               <a href="#prop--hasPredicate">hasPredicate</a>,               <a href="#prop--hasPropertyPredicate">hasPropertyPredicate</a>,               <a href="#prop--hasSubject">hasSubject</a>,               <a href="#prop--hasTextPredicate">hasTextPredicate</a>,               <a href="#prop--isMadeBy">isMadeBy</a>,               <a href="#prop--isSupportedBy">isSupportedBy</a>,               <a href="#prop--supports">supports</a>          </div>
       </div>
     </section>
 
     <div class="grid">
       <section>
         <h2>Classes</h2>
+          <div class="item" id="cls-<N63bfdf57e9be4bfd98a5893aedc244cf>">
+            <h3><N63bfdf57e9be4bfd98a5893aedc244cf></h3>
+            <div class="meta">IRI: <code>N63bfdf57e9be4bfd98a5893aedc244cf</code></div>
+
+
+
+            <div class="kv">
+            </div>
+          </div>
           <div class="item" id="cls--Attestation">
             <h3>Attestation</h3>
             <div class="meta">IRI: <code>http://w3id.org/claimont#Attestation</code></div>
@@ -88,7 +98,7 @@
             <div class="kv">
                 <div class="key">SubClass Of</div>
                 <div>
-                    <a href="#cls--Substantiation">:Substantiation</a>,                     <a href="http://docs.oasis-open.org/legalruleml/ns/v1.0/Statement">lrml:Statement</a>                </div>
+                    <a href="http://docs.oasis-open.org/legalruleml/ns/v1.0/Statement">lrml:Statement</a>                </div>
             </div>
           </div>
           <div class="item" id="cls--Attester">
@@ -121,7 +131,7 @@
                     <a href="#cls--IdentityClaim">:IdentityClaim</a>,                     <a href="#cls--Report">:Report</a>                </div>
                 <div class="key">In Domain Of</div>
                 <div>
-                    <a href="#prop--hasPredicate">:hasPredicate</a>,                     <a href="#prop--hasObject">:hasObject</a>,                     <a href="#prop--comprisesClaims">:comprisesClaims</a>,                     <a href="#prop--isSupportedBy">:isSupportedBy</a>                </div>
+                    <a href="#prop--hasObject">:hasObject</a>,                     <a href="#prop--comprisesClaims">:comprisesClaims</a>,                     <a href="#prop--isSupportedBy">:isSupportedBy</a>                </div>
                 <div class="key">In Range Of</div>
                 <div>
                     <a href="#prop--comprisesClaims">:comprisesClaims</a>,                     <a href="#prop--supports">:supports</a>                </div>
@@ -159,11 +169,10 @@
               <div class="section-title"><span class="badge">SKOS</span>Definition</div>
                 <div class="defblock">The target or value associated with the predicate of a claim or an attestation.</div>
 
+              <div class="section-title">Comments</div>
+                <div class="comment">Deprecated. Use owl:Thing instead.</div>
 
             <div class="kv">
-                <div class="key">In Range Of</div>
-                <div>
-                    <a href="#prop--hasObject">:hasObject</a>                </div>
             </div>
           </div>
           <div class="item" id="cls--Predicate">
@@ -173,11 +182,10 @@
               <div class="section-title"><span class="badge">SKOS</span>Definition</div>
                 <div class="defblock">The characteristic, attribute, or relationship asserted about the subject of a claim or an attestation.</div>
 
+              <div class="section-title">Comments</div>
+                <div class="comment">Deprecated. Use owl:Thing instead.</div>
 
             <div class="kv">
-                <div class="key">In Range Of</div>
-                <div>
-                    <a href="#prop--hasPredicate">:hasPredicate</a>                </div>
             </div>
           </div>
           <div class="item" id="cls--Report">
@@ -201,6 +209,8 @@
               <div class="section-title"><span class="badge">SKOS</span>Definition</div>
                 <div class="defblock">The thing about which a statement (i.e., a claim or an attestation) is made.</div>
 
+              <div class="section-title">Comments</div>
+                <div class="comment">Deprecated. Use owl:Thing instead.</div>
 
             <div class="kv">
             </div>
@@ -212,17 +222,10 @@
               <div class="section-title"><span class="badge">SKOS</span>Definition</div>
                 <div class="defblock">A thing presented in support of the truthfulness of a claim.</div>
 
+              <div class="section-title">Comments</div>
+                <div class="comment">Deprecated.</div>
 
             <div class="kv">
-                <div class="key">Superclass Of</div>
-                <div>
-                    <a href="#cls--Attestation">:Attestation</a>                </div>
-                <div class="key">In Domain Of</div>
-                <div>
-                    <a href="#prop--supports">:supports</a>                </div>
-                <div class="key">In Range Of</div>
-                <div>
-                    <a href="#prop--isSupportedBy">:isSupportedBy</a>                </div>
             </div>
           </div>
       </section>
@@ -256,7 +259,7 @@
                     <a href="#cls--Claim">:Claim</a>                </div>
                 <div class="key">Range</div>
                 <div>
-                    <a href="#cls--Object">:Object</a>                </div>
+                    <a href="#cls-owl-Thing">owl:Thing</a>                </div>
             </div>
           </div>
           <div class="item" id="prop--hasPredicate">
@@ -264,14 +267,30 @@
             <div class="meta">IRI: <code>http://w3id.org/claimont#hasPredicate</code></div>
 
 
+              <div class="section-title">Comments</div>
+                <div class="comment">Generic property that relates a claim or attestation to its predicate.</div>
+                <div class="comment">Do not use this property directly - use its 'hasTextPredicate' or 'hasPropertyPredicate' subproperties instead.</div>
 
             <div class="kv">
-                <div class="key">Domain</div>
-                <div>
-                    <a href="#cls--Claim">:Claim</a>                </div>
+            </div>
+          </div>
+          <div class="item" id="prop--hasPropertyPredicate">
+            <h3>hasPropertyPredicate</h3>
+            <div class="meta">IRI: <code>http://w3id.org/claimont#hasPropertyPredicate</code></div>
+
+
+              <div class="section-title">Comments</div>
+                <div class="comment">
+			Relates a claim or attestation to the RDF, RDFS, OWL object property, or OWL data property that represents the predicate of the claim.
+		</div>
+
+            <div class="kv">
                 <div class="key">Range</div>
                 <div>
-                    <a href="#cls--Predicate">:Predicate</a>                </div>
+                    <a href="#cls-rdf-Property">rdf:Property</a>                </div>
+                <div class="key">SubProperty Of</div>
+                <div>
+                    <a href="#prop--hasPredicate">:hasPredicate</a>                </div>
             </div>
           </div>
           <div class="item" id="prop--hasSubject">
@@ -283,6 +302,25 @@
                 <div class="comment">This property is used on the Claim and Attestation classes. For a Claim the value assigned to this property must be a Subject; for an Attestation the value must be a Claim. This is enforced by owl:Restriction (see the definitions of the Claim and Attestation classes.)</div>
 
             <div class="kv">
+            </div>
+          </div>
+          <div class="item" id="prop--hasTextPredicate">
+            <h3>hasTextPredicate</h3>
+            <div class="meta">IRI: <code>http://w3id.org/claimont#hasTextPredicate</code></div>
+
+
+              <div class="section-title">Comments</div>
+                <div class="comment">
+			Relates a claim or attestation to its predicate through a simple text string.
+		</div>
+
+            <div class="kv">
+                <div class="key">Range</div>
+                <div>
+                    <a href="#cls-xsd-string">xsd:string</a>                </div>
+                <div class="key">SubProperty Of</div>
+                <div>
+                    <a href="#prop--hasPredicate">:hasPredicate</a>                </div>
             </div>
           </div>
           <div class="item" id="prop--isMadeBy">
@@ -301,7 +339,7 @@
             <div class="meta">IRI: <code>http://w3id.org/claimont#isSupportedBy</code></div>
 
               <div class="section-title"><span class="badge">SKOS</span>Definition</div>
-                <div class="defblock">Indicates that a claim is backed or reinforced by some form of substantiation or evidence.</div>
+                <div class="defblock">Indicates that the claim in question is backed or reinforced by the resource in question.</div>
 
 
             <div class="kv">
@@ -310,7 +348,7 @@
                     <a href="#cls--Claim">:Claim</a>                </div>
                 <div class="key">Range</div>
                 <div>
-                    <a href="#cls--Substantiation">:Substantiation</a>                </div>
+                    <a href="#cls-rdfs-Resource">rdfs:Resource</a>                </div>
                 <div class="key">Inverse Of</div>
                 <div>
                     <a href="#prop--supports">:supports</a>                </div>
@@ -321,13 +359,13 @@
             <div class="meta">IRI: <code>http://w3id.org/claimont#supports</code></div>
 
               <div class="section-title"><span class="badge">SKOS</span>Definition</div>
-                <div class="defblock">Indicates that a substantiation provides evidence or backing for a particular claim.</div>
+                <div class="defblock">Indicates that the resource in question serves as evidence or backing for the claim in question.</div>
 
 
             <div class="kv">
                 <div class="key">Domain</div>
                 <div>
-                    <a href="#cls--Substantiation">:Substantiation</a>                </div>
+                    <a href="#cls-rdfs-Resource">rdfs:Resource</a>                </div>
                 <div class="key">Range</div>
                 <div>
                     <a href="#cls--Claim">:Claim</a>                </div>
